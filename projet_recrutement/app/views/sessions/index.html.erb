@@ -1,0 +1,35 @@
+<h1>Listing sessions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sess title</th>
+      <th>Sess begindate</th>
+      <th>Sess enddate</th>
+      <th>Sess state</th>
+      <th>Sess description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sessions.each do |session| %>
+      <tr>
+        <td><%= session.sess_title %></td>
+        <td><%= session.sess_beginDate %></td>
+        <td><%= session.sess_endDate %></td>
+        <td><%= session.sess_state %></td>
+        <td><%= session.sess_description %></td>
+        <td><%= link_to 'Show', session %></td>
+        <td><%= link_to 'Edit', edit_session_path(session) %></td>
+        <td><%= link_to 'Destroy', session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Session', new_session_path %>
