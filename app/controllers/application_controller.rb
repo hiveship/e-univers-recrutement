@@ -1,5 +1,24 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  def require_login
+    if session[:me_id]
+      if session[:me_state]
+        @me = User.find(session[:me_id])
+      else
+        flash[:error] = "Erreur, votre compte est désactivé. Veuillez contacter un adminisateur."
+        redirect_to :login
+      end
+    else
+      redirect_to :login
+    end
+  end
+
+  def have_admin_rights
+    #status = 1 => administrateur --- status = 2 => recruteur
+    if session[:me_status] != 1
+      flash[:error] = "Erreur, cette page est réservée aux administrateurs"
+      redirect_to :login
+    end
+  end
 end
