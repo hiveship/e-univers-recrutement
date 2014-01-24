@@ -4,7 +4,7 @@ class SiteController < ApplicationController
   def auth
     login = params[:login]
     password = params[:pass]
-   @me = User.where(user_pass: login[:user_login], user_pass: User.hash_password(password[:user_pass])).first!
+    @me = User.where(login: login[:login], pass: User.hash_password(password[:pass])).first!
     if @me
       session[:me] = @me.id
       flash[:success] = "Authentification réussie !"
