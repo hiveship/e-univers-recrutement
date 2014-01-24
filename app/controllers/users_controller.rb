@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :have_admin_rights
 
   # GET /users
   # GET /users.json
@@ -24,8 +24,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
+    @user = User.new params.require(:user).permit(:login, :mail, :status)
+    @user.pass = User.generate_random_password
+    @user.state = User::ACTIVATE
+    UserMailer.welcome_email(@user).deliver
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if  @user.update params.require(:user).permit(:user_login, :user_mail, :user_pass)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -54,21 +56,77 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
+    @user = User.find params[:id]
+    if @user.id != @me.id
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url }
+        format.json { head :no_content }
+      end
+    else
+      flash[:error] = "Erreur, vous ne pouvez pas supprimer votre propre compte"
+      redirect_to :users
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+  def activate
+    @user = User.find params[:id]
+    if @user.id != @me.id
+      if @user.state == User::DEACTIVATE
+        @user.update_columns :state => User::ACTIVATE
+        UserMailer.activate(@user).deliver
+        flash[:success] = "Le compte a bien été bloqué !"
+      else
+        flash[:error] = "le compte est déjà actif !"
+      end
+    else
+      flash[:error] = "Vous ne pouvez pas désactiver votre propre compte !"
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:login, :pass, :mail, :state, :status)
+  def deactivate
+    @user = User.find params[:id]
+    if @user.id != @me.id
+      if @user.state == User::ACTIVATE
+        @user.update_columns :state => User::DEACTIVATE
+        UserMailer.deactivate(@user).deliver
+        flash[:success] = "Le compte a bien été activé !"
+      else
+        flash[:error] = "le compte est déjà bloqué !"
+      end
+    else
+      flash[:error] = "Vous ne pouvez pas désactiver votre propre compte !"
     end
+  end
+
+  def set_admin
+    @user = User.find params[:id]
+    if  @user.id != @me.id
+      if @user.status == User::RECRUTEUR
+        @user.update_columns :status => User::ADMIN
+        UserMailer.set_admin(@user).deliver
+        flash[:success] = "Le compte a bien été nommé administrateur !"
+      else
+        flash[:error] = "Erreur, il s'agit déjà d'un administrateur !"
+      end
+    else
+      flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
+    end
+  end
+
+  def set_recruter
+    @user = User.find params[:id]
+    if  @user.id != @me.id
+      if @user.status == User::ADMIN
+        @user.update_columns :status => User::RECRUTEUR
+        UserMailer.set_recruteur(@user).deliver
+        flash[:success] = "Le compte a bien été nommé administrateur !"
+      else
+        flash[:error] = "Erreur, il s'agit déjà d'un administrateur !"
+      end
+    else
+      flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
+    end
+  end
+
 end

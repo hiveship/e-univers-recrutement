@@ -1,4 +1,9 @@
 Recrutement::Application.routes.draw do
+
+  get '/login' => 'site#login'
+  post '/login' => 'site#auth'
+  get '/logout' => 'site#logout'
+
   resources :profils
 
   resources :evaluations

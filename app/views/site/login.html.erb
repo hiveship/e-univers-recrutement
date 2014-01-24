@@ -1,0 +1,14 @@
+<h1>Espace réservé. Veuillez vous identifier</h1>
+<br/>
+
+<% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+<% end %>
+
+<!-- Utilisation des helpers Rails pour faire le formulaire (indispenssable)-->
+
+<%= form_tag login_path do %>
+    Login : <%= text_field :login, :login %><br/>
+    Mot de passe : <%= password_field :pass, :pass %><br/>
+    <%= submit_tag 'Valider'%>
+<%end%>
