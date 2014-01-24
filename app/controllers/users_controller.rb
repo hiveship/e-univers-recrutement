@@ -82,6 +82,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Vous ne pouvez pas désactiver votre propre compte !"
     end
+    redirect_to :users
   end
 
   def deactivate
@@ -97,6 +98,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Vous ne pouvez pas désactiver votre propre compte !"
     end
+    redirect_to :users
   end
 
   def set_admin
@@ -112,6 +114,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
     end
+    redirect_to :users
   end
 
   def set_recruter
@@ -127,6 +130,15 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
     end
+    redirect_to :users
+  end
+
+  def reset_password
+    @user = User.find params[:id]
+    new_password = User.reset_password
+    UserMailer.reset_password(@user, new_password).deliver
+    flash[:success] = "Le mot de passse a bien été ré-initialisé."
+    redirect_to :users
   end
 
 end
