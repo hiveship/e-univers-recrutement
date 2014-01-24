@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pseudo:</strong>
+  <%= @candidature.pseudo %>
+</p>
+
+<p>
+  <strong>Mail:</strong>
+  <%= @candidature.mail %>
+</p>
+
+<p>
+  <strong>Motivation:</strong>
+  <%= @candidature.motivation %>
+</p>
+
+<p>
+  <strong>Submitdate:</strong>
+  <%= @candidature.submitDate %>
+</p>
+
+<p>
+  <strong>Borndate:</strong>
+  <%= @candidature.bornDate %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @candidature.result %>
+</p>
+
+<p>
+  <strong>Id session:</strong>
+  <%= @candidature.id_session %>
+</p>
+
+<%= link_to 'Edit', edit_candidature_path(@candidature) %> |
+<%= link_to 'Back', candidatures_path %>
