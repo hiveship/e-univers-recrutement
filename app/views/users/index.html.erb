@@ -25,12 +25,12 @@
             <td><%= link_to 'Show', user %></td>
             <td><%= link_to 'Edit', edit_user_path(user) %></td>
             <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-            <td><%= link_to("Reset password", user_reset_password_path(user)) %></td>
+            <td><%= link_to("Reset password", user_reset_password_path(user), method: :post) %></td>
 
             <% if user.state == User::ACTIVATE %>
-                <td><%= link_to("Desactiver compte", user_deactivate_path(user)) %></td>
+                <td><%= link_to("Desactiver compte", user_deactivate_path(user), method: :post) %></td>
             <% else %>
-                <td><%= link_to("Desactiver compte", user_activate_path(user)) %></td>
+                <td><%= link_to("Activer compte", user_activate_path(user), method: :post) %></td>
             <% end %>
 
         </tr>

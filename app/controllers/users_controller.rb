@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_filter :have_admin_rights
+   before_filter :have_admin_rights, except: :show
 
   # GET /users
   # GET /users.json
@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find params[:id]
+    if @me.status == User::ADMIN
+      @user = User.find params[:id]
+    else @user = @me
+    end
   end
 
   # GET /users/new
