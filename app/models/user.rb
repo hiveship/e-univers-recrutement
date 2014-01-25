@@ -22,8 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def update_password(password)
-    test = User.hash_password(password)
-    update_columns(:pass => test)
+    update_columns(:pass => User.hash_password(password))
   end
 
   def reset_password
