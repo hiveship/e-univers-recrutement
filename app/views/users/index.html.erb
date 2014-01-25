@@ -1,33 +1,41 @@
 <h1>Listing users</h1>
 
 <table>
-  <thead>
+    <thead>
     <tr>
-      <th>Login</th>
-      <th>Pass</th>
-      <th>Mail</th>
-      <th>State</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-      <th></th>
+        <th>Login</th>
+        <th>Pass</th>
+        <th>Mail</th>
+        <th>State</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @users.each do |user| %>
-      <tr>
-        <td><%= user.login %></td>
-        <td><%= user.pass %></td>
-        <td><%= user.mail %></td>
-        <td><%= user.state %></td>
-        <td><%= user.status %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+            <td><%= user.login %></td>
+            <td><%= user.pass %></td>
+            <td><%= user.mail %></td>
+            <td><%= user.state %></td>
+            <td><%= user.status %></td>
+            <td><%= link_to 'Show', user %></td>
+            <td><%= link_to 'Edit', edit_user_path(user) %></td>
+            <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            <td><%= link_to("Reset password", user_reset_password_path(user)) %></td>
+
+            <% if user.state == User::ACTIVATE %>
+                <td><%= link_to("Desactiver compte", user_deactivate_path(user)) %></td>
+            <% else %>
+                <td><%= link_to("Desactiver compte", user_activate_path(user)) %></td>
+            <% end %>
+
+        </tr>
     <% end %>
-  </tbody>
+    </tbody>
 </table>
 
 <br>

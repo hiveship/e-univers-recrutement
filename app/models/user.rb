@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
 
-  #validates_uniqueness_of :user_mail, :user_login
-  #validates :user_login, :length => 3..10
+  validates_uniqueness_of :mail, :login
+  validates :login, :length => 3..10
 
-  #has_many :evaluations
+  # has_many :evaluations
 
   before_create do
     self.pass = User.hash_password(self.pass)
@@ -18,16 +18,17 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_random_password
-     SecureRandom.hex
+    SecureRandom.hex
   end
 
-  def self.update_password(password)
-    self.update_columns pass: User.has_password(password)
+  def update_password(password)
+    test = User.hash_password(password)
+    self.update_columns(:pass => test)
   end
 
   def self.reset_password
-    new_password = SecureRandom.hex
-    update_password new_password
+    new_password = generate_random_password
+    self.update_password(new_password)
     new_password
   end
 

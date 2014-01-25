@@ -8,7 +8,13 @@ Recrutement::Application.routes.draw do
 
   resources :evaluations
 
-  resources :users
+  resources :users do
+    get :reset_password
+    get :activate
+    get :deactivate
+    get :set_recruteur
+    get :set_admin
+  end
 
   resources :sessions
 

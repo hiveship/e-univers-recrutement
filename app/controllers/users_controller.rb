@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   # before_filter :have_admin_rights
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate, :reset_password, :set_admin, :set_recruteur]
 
   # GET /users
   # GET /users.json
@@ -73,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def activate
-    @user = User.find params[:id]
+    @user = User.find params[:user_id]
     if @user.id != @me.id
       if @user.state == User::DEACTIVATE
         @user.update_columns :state => User::ACTIVATE
@@ -89,7 +88,7 @@ class UsersController < ApplicationController
   end
 
   def deactivate
-    @user = User.find params[:id]
+    @user = User.find params[:user_id]
     if @user.id != @me.id
       if @user.state == User::ACTIVATE
         @user.update_columns :state => User::DEACTIVATE
@@ -121,7 +120,7 @@ class UsersController < ApplicationController
   end
 
   def set_recruteur
-    @user = User.find params[:id]
+    @user = User.find params[:user_id]
     if  @user.id != @me.id
       if @user.status == User::ADMIN
         @user.update_columns :status => User::RECRUTEUR
@@ -137,16 +136,12 @@ class UsersController < ApplicationController
   end
 
   def reset_password
-    @user = User.find params[:id]
+    @user = User.find params[:user_id]
     new_password = User.reset_password
     #  UserMailer.reset_password(@user, new_password).deliver
     flash[:success] = "Le mot de passse a bien été ré-initialisé."
     redirect_to :users
   end
 
-  private
-  def set_user
-    @user = User.find(params[:id])
-  end
 
 end
