@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pseudo: MyString
+  mail: MyString
+  motivation: MyString
+  submitDate: 2014-01-24
+  bornDate: 2014-01-24
+  result: MyString
+  id_session: 1
+
+two:
+  pseudo: MyString
+  mail: MyString
+  motivation: MyString
+  submitDate: 2014-01-24
+  bornDate: 2014-01-24
+  result: MyString
+  id_session: 1
