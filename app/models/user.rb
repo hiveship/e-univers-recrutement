@@ -23,12 +23,12 @@ class User < ActiveRecord::Base
 
   def update_password(password)
     test = User.hash_password(password)
-    self.update_columns(:pass => test)
+    update_columns(:pass => test)
   end
 
-  def self.reset_password
-    new_password = generate_random_password
-    self.update_password(new_password)
+  def reset_password
+    new_password = User.generate_random_password
+    update_password(new_password)
     new_password
   end
 

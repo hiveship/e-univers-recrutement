@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find params[:id]
   end
 
   # POST /users
@@ -137,11 +138,10 @@ class UsersController < ApplicationController
 
   def reset_password
     @user = User.find params[:user_id]
-    new_password = User.reset_password
+    new_password = @user.reset_password
     #  UserMailer.reset_password(@user, new_password).deliver
     flash[:success] = "Le mot de passse a bien été ré-initialisé."
     redirect_to :users
   end
-
 
 end
