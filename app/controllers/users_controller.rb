@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     respond_to do |format|
-      if  @user.update params.require(:user).permit(:user_login, :user_mail, :user_pass)
+      if  @user.update params.require(:user).permit(:login, :mail, :pass, :status)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
