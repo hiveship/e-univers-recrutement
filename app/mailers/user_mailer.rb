@@ -1,13 +1,15 @@
 class UserMailer < ActionMailer::Base
   default from: "projet.test.univers@gmail.com"
 
-  def welcome(user)
+  def welcome(user,password)
     @user = user
+    @password = password
     mail(to: @user.mail, subject: 'Compte sur la plate-forme de recrutement de E-Univers créé')
   end
 
   def reset_password(user, new_password)
     @user = user
+    @new_password = new_password
     mail(to: @user.mail, subject: 'Mot de passe sur la plate-forme de recrutement de E-Univers re-initialisé')
   end
 
