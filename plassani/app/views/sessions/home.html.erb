@@ -11,10 +11,10 @@
                 <p>Date de cloture des candidatures : <b> <%= %> </b></p>
                 <p> <%= session.description[0,250] %> </p>
 
-                <%= link_to ("Plus d'infos"), session_path(session), method: :post, :class=>'btn btn-inverse' %>
+                <%= link_to ("Plus d'infos"), session_path(session), :class=>'btn btn-inverse' %>
 
                 <%= link_to t('.new', :default => t("helpers.links.Postuler")),
-                            new_candidature_path,
+                            new_candidature_path(session),
                             :class => 'btn btn-primary' %>
 
 

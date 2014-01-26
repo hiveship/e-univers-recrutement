@@ -2,10 +2,11 @@
 <header class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <%= link_to root_path, class: %w(brand) do %>
-                E-Univers
-            <% end %>
+
             <% if @me %>
+                <%= link_to sessions_path, class: %w(brand) do %>
+                    E-Univers
+                <% end %>
                 <% if (@me.status == User::ADMIN ||@me.status == User::RECRUTEUR)  %>
                     <ul class="nav navbar-nav">
                         <li>
@@ -59,7 +60,9 @@
                     </li>
                 </ul>
             <% else %>
-
+                <%= link_to root_path, class: %w(brand) do %>
+                    E-Univers
+                <% end %>
                 <ul class="nav navbar-nav">
                 <li>
 

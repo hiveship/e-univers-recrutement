@@ -16,7 +16,10 @@ Recrutement::Application.routes.draw do
     post :set_admin
   end
 
-  resources :sessions
+  resources :sessions do
+    post :show
+
+  end
 
   resources :candidatures
 
