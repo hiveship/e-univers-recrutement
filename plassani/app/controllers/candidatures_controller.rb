@@ -1,6 +1,6 @@
 class CandidaturesController < ApplicationController
   before_action :set_candidature, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :require_login, :only=> [:create,:new]
   # GET /candidatures
   # GET /candidatures.json
   def index
