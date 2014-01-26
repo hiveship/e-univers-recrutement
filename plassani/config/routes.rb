@@ -20,7 +20,7 @@ Recrutement::Application.routes.draw do
 
   resources :candidatures
 
-  root to: 'sessions#index'
+  root to: 'sessions#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

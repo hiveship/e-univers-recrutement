@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_filter :require_login, :except => [:auth, :login]
+  before_filter :require_login, :except => [:auth, :login,:home]
 
   def require_login
     if session[:me]

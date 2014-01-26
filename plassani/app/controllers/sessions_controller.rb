@@ -7,6 +7,10 @@ class SessionsController < ApplicationController
     @sessions = Session.all
   end
 
+  def home
+    @sessions = Session.all  # a faire => find_by(status==Session::ENCOURS)
+  end
+
   # GET /sessions/1
   # GET /sessions/1.json
   def show
