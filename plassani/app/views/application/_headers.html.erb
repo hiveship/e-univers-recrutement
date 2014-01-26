@@ -59,6 +59,17 @@
                     </li>
                 </ul>
             <% else %>
+
+                <ul class="nav navbar-nav">
+                <li>
+
+                    <%= link_to sessions_path, class: "link" do %>
+                        <i class="icon-wrench"></i>
+                        Sessions
+                    <% end %>
+                </li>
+                </ul>
+
                 <ul class="nav pull-right">
                     <li>
                         <a href="#modal-login" data-toggle="modal" class="navbar-link">

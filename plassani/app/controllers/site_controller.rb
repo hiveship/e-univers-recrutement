@@ -8,7 +8,7 @@ class SiteController < ApplicationController
     if @me
       session[:me] = @me.id
       flash[:success] = "Authentification réussie !"
-      redirect_to :users #redirige vers :users pour les tests
+      redirect_to :sessions
     end
   rescue
     flash[:error] = "Erreur d'authentification."
