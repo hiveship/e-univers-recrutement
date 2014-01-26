@@ -1,5 +1,60 @@
-<h1>New session</h1>
+<div class="hero-unit">
+    <h3>Nouvelle session</h3>
+    <br>
 
-<%= render 'form' %>
+    <%= form_for(@session) do |f| %>
+        <% if @session.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@session.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= link_to 'Back', sessions_path %>
+                <ul>
+                    <% @session.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+        <div class="field">
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+        </div>
+
+        <div class="field">
+            <%= f.label :beginDate %>
+            <%= f.text_field :beginDate %>
+        </div>
+
+        <div class="field">
+            <%= f.label :endDate %>
+            <%= f.text_field :endDate %>
+        </div>
+
+        <div class="field">
+            <%= f.label :description %>
+            <%= f.text_field :description %>
+        </div>
+
+        <%= f.text_field :beginDate, :id => "datepicker", :value => Date.today %>
+        <%= f.text_field :endDate, :id => "datepicker2", :value => Date.today %>
+
+
+
+        <div class="actions">
+            <%= f.submit 'Valider', :class => 'btn' %>
+        </div>
+
+    <% end %>
+
+
+
+
+    <%= link_to 'Retour', sessions_path, class: "btn pull-right"  %>
+</div>
+
+<script>
+    $('#datepicker').datepicker({language :"fr" ,  todayHighlight: true ,format: 'dd/mm/yy' , autoclose: true, minDate: 0});
+</script>
+<script>
+    $('#datepicker2').datepicker({language :"fr" ,  todayHighlight: true ,format: 'dd/mm/yy' , autoclose: true , minDate: 0});
+</script>

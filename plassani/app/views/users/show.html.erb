@@ -15,10 +15,9 @@
   <%= @user.mail %>
 </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
+
+<td><i class="icon-repeat"></i> <%= link_to("Reset password", user_reset_password_path(@user), method: :post) %>
+</td>
 
 <p>
   <strong>Status:</strong>

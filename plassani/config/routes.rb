@@ -3,20 +3,17 @@ Recrutement::Application.routes.draw do
   get '/login' => 'site#login'
   post '/login' => 'site#auth'
   get '/logout' => 'site#logout'
-  get'/reset_password' => 'users#reset_password'
-
 
   resources :profils
 
   resources :evaluations
 
   resources :users do
-    get :reset_password
-    get :activate
-    get :deactivate
-    get :set_recruteur
-    get :set_admin
-    get :show_me
+    post :reset_password
+    post :activate
+    post :deactivate
+    post :set_recruteur
+    post :set_admin
   end
 
   resources :sessions

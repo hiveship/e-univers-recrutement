@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :have_admin_rights ,except: :show
+  before_filter :have_admin_rights, except: :show
 
   # GET /users
   # GET /users.json
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   # GET /users/new
   def new
     @user = User.new
@@ -33,10 +32,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new params.require(:user).permit(:login, :mail, :status, :pass)
     @user.pass = User.generate_random_password
+    password = @user.pass
     @user.state = User::ACTIVATE
-    UserMailer.welcome(@user).deliver
     respond_to do |format|
       if @user.save
+        UserMailer.welcome(@user,password).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     respond_to do |format|
-      if  @user.update params.require(:user).permit(:user_login, :user_mail, :user_pass)
+      if  @user.update params.require(:user).permit(:login, :mail, :pass, :status)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
     if @user.id != @me.id
       if @user.state == User::DEACTIVATE
         @user.update_columns :state => User::ACTIVATE
-        #   UserMailer.activate(@user).deliver
+        UserMailer.activate(@user).deliver
         flash[:success] = "Le compte a bien été bloqué !"
       else
         flash[:error] = "le compte est déjà actif !"
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     if @user.id != @me.id
       if @user.state == User::ACTIVATE
         @user.update_columns :state => User::DEACTIVATE
-        #   UserMailer.deactivate(@user).deliver
+        UserMailer.deactivate(@user).deliver
         flash[:success] = "Le compte a bien été activé !"
       else
         flash[:error] = "le compte est déjà bloqué !"
@@ -114,7 +114,7 @@ class UsersController < ApplicationController
     if  @user.id != @me.id
       if @user.status == User::RECRUTEUR
         @user.update_columns :status => User::ADMIN
-        #    UserMailer.set_admin(@user).deliver
+        UserMailer.set_admin(@user).deliver
         flash[:success] = "Le compte a bien été nommé administrateur !"
       else
         flash[:error] = "Erreur, il s'agit déjà d'un administrateur !"
@@ -130,7 +130,7 @@ class UsersController < ApplicationController
     if  @user.id != @me.id
       if @user.status == User::ADMIN
         @user.update_columns :status => User::RECRUTEUR
-        #    UserMailer.set_recruteur(@user).deliver
+        UserMailer.set_recruteur(@user).deliver
         flash[:success] = "Le compte a bien été nommé administrateur !"
       else
         flash[:error] = "Erreur, il s'agit déjà d'un administrateur !"
@@ -144,13 +144,9 @@ class UsersController < ApplicationController
   def reset_password
     @user = User.find params[:user_id]
     new_password = @user.reset_password
-    #  UserMailer.reset_password(@user, new_password).deliver
+    UserMailer.reset_password(@user, new_password).deliver
     flash[:success] = "Le mot de passse a bien été ré-initialisé."
     redirect_to :users
-  end
-
-  def show_me
-    @user = @me
   end
 
 end
