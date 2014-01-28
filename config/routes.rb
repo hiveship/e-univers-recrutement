@@ -16,9 +16,16 @@ Recrutement::Application.routes.draw do
     post :set_admin
   end
 
-  resources :sessions
+  resources :sessions do
+    resources :profils
+    resources :candidatures
+    post :deactivate
+    post :activate
+  end
 
-  resources :candidatures
+  resources :candidatures do
+    resources :evaluations
+  end
 
   root to: 'site#login'
 

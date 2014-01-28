@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_session, only:[:show, :edit, :update, :activate, :deactivate]
   # GET /sessions
   # GET /sessions.json
   def index
@@ -24,8 +23,8 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.new(session_params)
-
+    @session = Session.new params.require(:session).permit(:title, :description, :beginDate, :endDate)
+    @session.state = Session::ACTIVATE
     respond_to do |format|
       if @session.save
         format.html { redirect_to @session, notice: 'Session was successfully created.' }
@@ -41,7 +40,7 @@ class SessionsController < ApplicationController
   # PATCH/PUT /sessions/1.json
   def update
     respond_to do |format|
-      if @session.update(session_params)
+      if @session.update params.require(:session).permit(:title, :description, :beginDate, :endDate)
         format.html { redirect_to @session, notice: 'Session was successfully updated.' }
         format.json { head :no_content }
       else
@@ -51,24 +50,37 @@ class SessionsController < ApplicationController
     end
   end
 
-  # DELETE /sessions/1
-  # DELETE /sessions/1.json
   def destroy
-    @session.destroy
+    Session.find(params[:id]).destroy!
     respond_to do |format|
       format.html { redirect_to sessions_url }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_session
-      @session = Session.find(params[:id])
+  def activate
+    @session = Session.find params[:id]
+    if @session.state == Session::DEACTIVATE
+      @session.update_columns :state => Session::ACTIVATE
+      flash[:success] = "La session a bien été bloqué !"
+    else
+      flash[:error] = "La session est déjà actif !"
     end
+    redirect_to :sessions
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def session_params
-      params.require(:session).permit(:title, :beginDate, :endDate, :state, :description, :id_profil)
+  def deactivate
+    if @session.state == Session::ACTIVATE
+      @session.update_columns :state => Session::DEACTIVATE
+      flash[:success] = "La session a bien été relancée !"
+    else
+      flash[:error] = "La session est déjà bloquée !"
     end
+    redirect_to :sessions
+  end
+
+    private
+  def set_session
+    @session = Session.find params[:id]
+  end
 end
