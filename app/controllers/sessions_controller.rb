@@ -59,7 +59,7 @@ class SessionsController < ApplicationController
   end
 
   def activate
-    @session = Session.find params[:id]
+
     if @session.state == Session::DEACTIVATE
       @session.update_columns :state => Session::ACTIVATE
       flash[:success] = "La session a bien été bloqué !"

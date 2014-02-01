@@ -8,13 +8,7 @@ Recrutement::Application.routes.draw do
 
   resources :evaluations
 
-  resources :users do
-    post :reset_password
-    post :activate
-    post :deactivate
-    post :set_recruteur
-    post :set_admin
-  end
+  resources :user, only: %i(show update)
 
   resources :sessions do
     resources :profils
@@ -25,6 +19,18 @@ Recrutement::Application.routes.draw do
 
   resources :candidatures do
     resources :evaluations
+  end
+
+  namespace :admin do
+    resources :users do
+      member do
+        post :reset_password
+        post :activate
+        post :deactivate
+        post :set_recruteur
+        post :set_admin
+      end
+    end
   end
 
   root to: 'site#login'

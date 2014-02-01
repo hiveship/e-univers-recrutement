@@ -1,6 +1,6 @@
 <h1>Liste des comptes</h1>
 
-<%= link_to 'New User', new_user_path, class: "btn pull-right" %>
+<%= link_to 'New User', new_admin_user_path, class: "btn pull-right" %>
 <br>
 <br>
 <table class="table table-hover">
@@ -38,21 +38,21 @@
 
 
         <td><i class="icon-search"></i><%= link_to 'Show', user %></td>
-        <td><i class="icon-pencil"></i><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><i class="icon-pencil"></i><%= link_to 'Edit', edit_admin_user_path(user) %></td>
         <td>
             <i class="icon-remove-sign"></i> <%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'} %>
         </td>
-        <td><i class="icon-repeat"></i> <%= link_to("Reset password", user_reset_password_path(user), method: :post) %>
+        <td><i class="icon-repeat"></i> <%= link_to("Reset password", reset_password_admin_user_path(user), method: :post) %>
         </td>
         <% if user.state == User::ACTIVATE %>
             <td>
                 <i class="icon-eye-open"></i>
-                <%= link_to("Desactiver compte", user_deactivate_path(user), method: :post) %>
+                <%= link_to("Desactiver compte", deactivate_admin_user_path(user), method: :post) %>
             </td>
         <% else %>
             <td>
                 <i class="icon-eye-close"></i>
-                <%= link_to("Activer compte", user_activate_path(user), method: :post) %>
+                <%= link_to("Activer compte", activate_admin_user_path(user), method: :post) %>
             </td>
         <% end %>
         </tr>
