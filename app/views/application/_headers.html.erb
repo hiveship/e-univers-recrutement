@@ -5,7 +5,7 @@
                 E-Univers
             <% end %>
             <% if @me %>
-                <% if (@me.status == User::ADMIN ||@me.status == User::RECRUTEUR)  %>
+                <% if (@me.status == User::ADMIN ||@me.status == User::RECRUTEUR) %>
                     <ul class="nav navbar-nav">
                         <li>
                             <%= link_to sessions_path, class: "link" do %>
@@ -14,10 +14,10 @@
                             <% end %>
                         </li>
 
-                        <% if @me.status == User::ADMIN  %>
+                        <% if @me.status == User::ADMIN %>
                             <li>
 
-                                <%= link_to users_path, class: "link" do %>
+                                <%= link_to admin_users_path, class: "link" do %>
                                     <i class="icon-wrench"></i>
                                     Gestion des Comptes
                                 <% end %>
@@ -26,7 +26,7 @@
 
                         <% if @me.status == User::RECRUTEUR %>
                             <li>
-                                <%=link_to user_path(@me.id), class: "link" do %>
+                                <%= link_to edit_user_path(@me.id), class: "link" do %>
                                     <i class="icon-wrench"></i>
                                     Gérer mon Compte
                                 <% end %>

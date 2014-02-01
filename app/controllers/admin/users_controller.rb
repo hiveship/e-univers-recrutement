@@ -11,6 +11,10 @@ class Admin::UsersController < Admin::AdminController
   def show
   end
 
+  def edit
+    @user = User.find params[:id]
+  end
+
   def create
     @user = User.new params.require(:user).permit(:login, :mail, :status)
     @user.pass = User.generate_random_password
@@ -51,12 +55,12 @@ class Admin::UsersController < Admin::AdminController
       end
     else
       flash[:error] = "Erreur, vous ne pouvez pas supprimer votre propre compte"
-      redirect_to :users
+      redirect_to :admin_users
     end
   end
 
   def activate
-    @user = User.find params[:user_id]
+    @user = User.find params[:id]
     if @user.id != @me.id
       if @user.state == User::DEACTIVATE
         @user.update_columns :state => User::ACTIVATE
@@ -68,11 +72,11 @@ class Admin::UsersController < Admin::AdminController
     else
       flash[:error] = "Vous ne pouvez pas désactiver votre propre compte !"
     end
-    redirect_to :users
+    redirect_to :admin_users
   end
 
   def deactivate
-    @user = User.find params[:user_id]
+    @user = User.find params[:id]
     if @user.id != @me.id
       if @user.state == User::ACTIVATE
         @user.update_columns :state => User::DEACTIVATE
@@ -84,7 +88,7 @@ class Admin::UsersController < Admin::AdminController
     else
       flash[:error] = "Vous ne pouvez pas désactiver votre propre compte !"
     end
-    redirect_to :users
+    redirect_to :admin_users
   end
 
   def set_admin
@@ -100,11 +104,11 @@ class Admin::UsersController < Admin::AdminController
     else
       flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
     end
-    redirect_to :users
+    redirect_to :admin_users
   end
 
   def set_recruteur
-    @user = User.find params[:user_id]
+    @user = User.find params[:id]
     if  @user.id != @me.id
       if @user.status == User::ADMIN
         @user.update_columns :status => User::RECRUTEUR
@@ -116,15 +120,15 @@ class Admin::UsersController < Admin::AdminController
     else
       flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
     end
-    redirect_to :users
+    redirect_to :admin_users
   end
 
   def reset_password
-    @user = User.find params[:user_id]
+    @user = User.find params[:id]
     new_password = @user.reset_password
     UserMailer.reset_password(@user, new_password).deliver
     flash[:success] = "Le mot de passse a bien été ré-initialisé."
-    redirect_to :users
+    redirect_to :admin_users
   end
 
 end
