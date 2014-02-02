@@ -36,7 +36,7 @@
             </td>
         <% end %>
 
-        <td><i class="icon-pencil"></i><%= link_to 'Edit', edit_admin_user_path(user), method: :post %></td>
+        <td><i class="icon-pencil"></i><%= link_to 'Edit', edit_admin_user_path(user), method: :get %></td>
         <td>
             <i class="icon-remove-sign"></i> <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %>
         </td>

@@ -6,7 +6,9 @@
       <th>Title</th>
       <th>Begindate</th>
       <th>Enddate</th>
+      <th>State</th>
       <th>Description</th>
+      <th>Id profil</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,11 +21,17 @@
         <td><%= session.title %></td>
         <td><%= session.beginDate %></td>
         <td><%= session.endDate %></td>
+        <td><%= session.state %></td>
         <td><%= session.description %></td>
-        <td><%= link_to 'Voir détails', session %></td>
-        <td><%= link_to 'Postuler', new_candidature_path(session) %></td>
+        <td><%= session.id_profil %></td>
+        <td><%= link_to 'Show', session %></td>
+        <td><%= link_to 'Edit', edit_session_path(session) %></td>
+        <td><%= link_to 'Destroy', session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 <br>
+
+<%= link_to 'New Session', new_admin_session_path  %>

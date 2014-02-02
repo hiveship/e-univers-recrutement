@@ -5,10 +5,10 @@
                 E-Univers
             <% end %>
             <% if @me %>
-                <% if (@me.status == User::ADMIN ||@me.status == User::RECRUTEUR) %>
+                <% if (@me.status == User::ADMIN || @me.status == User::RECRUTEUR) %>
                     <ul class="nav navbar-nav">
                         <li>
-                            <%= link_to sessions_path, class: "link" do %>
+                            <%= link_to admin_sessions_path, class: "link" do %>
                                 <i class="icon-list"></i>
                                 Gestion des Sessions
                             <% end %>

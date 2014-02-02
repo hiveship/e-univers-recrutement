@@ -5,8 +5,8 @@ class Session < ActiveRecord::Base
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
 
-  validates_presence_of :description
-  validates :sess_title, :length => 1..50
+  validates_presence_of :description, :title, :endDate
+  validates :title, :length => 1..50
   validate :validate_end_date, :validate_begin_date
 
   has_one :profil

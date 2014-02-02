@@ -10,6 +10,16 @@ Recrutement::Application.routes.draw do
         post :set_admin
       end
     end
+
+    resources :sessions do
+      member do
+        post :activate
+        post :deactivate
+      end
+    end
+
+    resources :profils
+
   end
 
 

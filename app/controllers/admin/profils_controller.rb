@@ -1,4 +1,4 @@
-class ProfilsController < ApplicationController
+class Admin::ProfilsController < Admin::AdminController
   before_action :set_profil, only: [:show, :edit, :update, :destroy]
 
   # GET /profils
