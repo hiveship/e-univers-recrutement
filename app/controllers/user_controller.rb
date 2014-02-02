@@ -1,16 +1,19 @@
-class UsersController < ApplicationController
+class UserController < ApplicationController
   # Controler qui gère uniquement @me
+  def index
+    @user = @me
+  end
 
   def show
-      @user = @me
+    @user = @me
   end
 
   def edit
-    @user = User.find params[:id]
+    @user = @me
   end
 
   def update
-    @user = User.find params[:id]
+    @user = @µe
     @user.update_password params[:pass]
     respond_to do |format|
       if  @user.save
