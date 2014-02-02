@@ -5,11 +5,11 @@ class Session < ActiveRecord::Base
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
 
-  validates_presence_of :description, :title, :endDate
+  validates_presence_of :description, :title, :endDate, :beginDate
   validates :title, :length => 1..50
   validate :validate_end_date, :validate_begin_date
 
-  has_one :profil
+  belongs_to :profil
   has_many :candidatures
 
   def validate_end_date

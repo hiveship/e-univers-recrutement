@@ -1,2 +1,2 @@
-class Recruteur::SessionsController < ApplicationController
+class Recruteur::SessionsController < Recruteur::RecruteurController
 end

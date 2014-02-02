@@ -3,8 +3,8 @@ class CreateEvaluations < ActiveRecord::Migration
     create_table :evaluations do |t|
       t.integer :mark
       t.string :commentary
-      t.integer :id_candidature
-      t.integer :id_user
+      t.belongs_to :candidature
+      t.belongs_to :user
 
       t.timestamps
     end

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140124203749) do
     t.date     "submitDate"
     t.date     "bornDate"
     t.string   "result"
-    t.integer  "id_session"
+    t.integer  "session_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20140124203749) do
   create_table "evaluations", force: true do |t|
     t.integer  "mark"
     t.string   "commentary"
-    t.integer  "id_candidature"
-    t.integer  "id_user"
+    t.integer  "candidature_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140124203749) do
     t.date     "endDate"
     t.string   "state"
     t.string   "description"
-    t.integer  "id_profil"
+    t.integer  "profil_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
