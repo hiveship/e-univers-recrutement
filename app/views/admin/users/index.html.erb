@@ -36,11 +36,9 @@
             </td>
         <% end %>
 
-
-        <td><i class="icon-search"></i><%= link_to 'Show', user_path(user) %></td>
-        <td><i class="icon-pencil"></i><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+        <td><i class="icon-pencil"></i><%= link_to 'Edit', edit_admin_user_path(user), method: :post %></td>
         <td>
-            <i class="icon-remove-sign"></i> <%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'} %>
+            <i class="icon-remove-sign"></i> <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %>
         </td>
         <td><i class="icon-repeat"></i> <%= link_to("Reset password", reset_password_admin_user_path(user), method: :post) %>
         </td>
@@ -53,6 +51,17 @@
             <td>
                 <i class="icon-eye-close"></i>
                 <%= link_to("Activer compte", activate_admin_user_path(user), method: :post) %>
+            </td>
+        <% end %>
+        <% if user.status == User::RECRUTEUR %>
+            <td>
+                <i class="icon-eye-open"></i>
+                <%= link_to("Nommer administrateur", set_admin_admin_user_path(user), method: :post) %>
+            </td>
+        <% else %>
+            <td>
+                <i class="icon-eye-close"></i>
+                <%= link_to("Nommer recruteur", set_recruteur_admin_user_path(user), method: :post) %>
             </td>
         <% end %>
         </tr>

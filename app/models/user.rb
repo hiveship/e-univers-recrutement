@@ -3,14 +3,16 @@ class User < ActiveRecord::Base
   RECRUTEUR = "recruiter"
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
-
-  #validates_uniqueness_of :mail, :login
+  
+  validates_presence_of :mail, :login, :status, :state, :pass
+  validates_uniqueness_of :mail, :login
   validates :login, :length => 3..10
 
-   has_many :evaluations
+  has_many :evaluations
 
   before_create do
     self.pass = User.hash_password(self.pass)
+    self.login = self.login.downcase
   end
 
   def self.hash_password(password)

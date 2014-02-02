@@ -21,7 +21,7 @@ Recrutement::Application.routes.draw do
 
   resources :evaluations
 
-  resources :user, only: [:show, :update, :edit]
+  resources :user, only: [:update, :edit]
 
   resources :sessions do
     resources :profils
@@ -35,7 +35,7 @@ Recrutement::Application.routes.draw do
   end
 
 
-  root to: 'site#login'
+  root to: 'sessions#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -8,9 +8,6 @@ class Admin::UsersController < Admin::AdminController
     @user = User.new
   end
 
-  def show
-  end
-
   def edit
     @user = User.find params[:id]
   end
@@ -23,8 +20,9 @@ class Admin::UsersController < Admin::AdminController
     respond_to do |format|
       if @user.save
         UserMailer.welcome(@user, password).deliver
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
+        flash[:success] = "L'utilisateur a bien été créé !"
+        format.html { redirect_to admin_users_path}
+        format.json { head :no_content }
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -36,7 +34,8 @@ class Admin::UsersController < Admin::AdminController
     @user = User.find params[:id]
     respond_to do |format|
       if  @user.update params.require(:user).permit(:login, :mail)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash[:success] = "L'utilisateur a bien été modifié !"
+        format.html { redirect_to admin_users_path}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -49,8 +48,9 @@ class Admin::UsersController < Admin::AdminController
     @user = User.find params[:id]
     if @user.id != @me.id
       @user.destroy
+      flash[:success] = "L'utilisateur a bien été supprimé !"
       respond_to do |format|
-        format.html { redirect_to users_url }
+        format.html { redirect_to admin_users_path }
         format.json { head :no_content }
       end
     else
@@ -67,7 +67,7 @@ class Admin::UsersController < Admin::AdminController
         UserMailer.activate(@user).deliver
         flash[:success] = "Le compte a bien été bloqué !"
       else
-        flash[:error] = "le compte est déjà actif !"
+        flash[:error] = "Le compte est déjà actif !"
       end
     else
       flash[:error] = "Vous ne pouvez pas désactiver votre propre compte !"
@@ -113,9 +113,9 @@ class Admin::UsersController < Admin::AdminController
       if @user.status == User::ADMIN
         @user.update_columns :status => User::RECRUTEUR
         UserMailer.set_recruteur(@user).deliver
-        flash[:success] = "Le compte a bien été nommé administrateur !"
+        flash[:success] = "Le compte a bien été nommé recruteur !"
       else
-        flash[:error] = "Erreur, il s'agit déjà d'un administrateur !"
+        flash[:error] = "Erreur, il s'agit déjà d'un recruteur !"
       end
     else
       flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
@@ -127,7 +127,7 @@ class Admin::UsersController < Admin::AdminController
     @user = User.find params[:id]
     new_password = @user.reset_password
     UserMailer.reset_password(@user, new_password).deliver
-    flash[:success] = "Le mot de passse a bien été ré-initialisé."
+    flash[:success] = "Le mot de passse a bien été ré-initialisé !"
     redirect_to :admin_users
   end
 

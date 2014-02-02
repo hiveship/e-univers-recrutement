@@ -1,23 +1,17 @@
 class UserController < ApplicationController
   # Controler qui gère uniquement @me
-  def index
-    @user = @me
-  end
-
-  def show
-    @user = @me
-  end
 
   def edit
     @user = @me
   end
 
   def update
-    @user = @µe
-    @user.update_password params[:pass]
+    @user = @me
+    @user.update_password params[:user][:pass]
     respond_to do |format|
       if  @user.save
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash[:success] = "Votre mot de passe a bien été modifié !"
+        format.html { redirect_to edit_user_path}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

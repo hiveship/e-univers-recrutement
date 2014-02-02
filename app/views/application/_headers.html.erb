@@ -16,7 +16,6 @@
 
                         <% if @me.status == User::ADMIN %>
                             <li>
-
                                 <%= link_to admin_users_path, class: "link" do %>
                                     <i class="icon-wrench"></i>
                                     Gestion des Comptes
@@ -42,11 +41,12 @@
                             <%= t 'Deconnexion' %>
                         <% end %>
                     </li>
+
                     <li>
-                        <a>
+                        <%= link_to edit_user_path(@me), class: %w(navbar-link) do %>
                             <i class="icon-user"></i>
-                            <%= @me.login %>
-                        </a>
+                            <%= t @me.login %>
+                        <% end %>
                     </li>
                 </ul>
             <% else %>

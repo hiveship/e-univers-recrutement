@@ -1,6 +1,6 @@
 <h1>Editing user</h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, url: admin_user_path(@user), method: "patch")  do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -18,25 +18,12 @@
         <%= f.text_field :login %>
     </div>
     <div class="field">
-        <%= f.label :pass %><br>
-        <%= f.text_field :pass %>
-    </div>
-    <div class="field">
         <%= f.label :mail %><br>
         <%= f.text_field :mail %>
-    </div>
-    <div class="field">
-        <%= f.label :state %><br>
-        <%= f.text_field :state %>
-    </div>
-    <div class="field">
-        <%= f.label :status %><br>
-        <%= f.text_field :status %>
     </div>
     <div class="actions">
         <%= f.submit %>
     </div>
 <% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', admin_user_path %>
+<%= link_to 'Liste des comptes', admin_user_path %>
