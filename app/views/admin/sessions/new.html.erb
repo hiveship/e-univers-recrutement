@@ -14,6 +14,11 @@
     <% end %>
 
     <div class="field">
+        Profil de poste:<br>
+        <%= select("post", "Profil de poste", Profil.all.collect { |p| [p.title] }) %><br>
+    </div>
+
+    <div class="field">
         <%= f.label :title %><br>
         <%= f.text_field :title %>
     </div>
@@ -31,15 +36,11 @@
     </div>
     <div class="field">
         <%= f.label :description %><br>
-        <%= f.text_area(:description)%>
+        <%= f.text_area(:description) %>
     </div>
 
     <div class="field">
-    <select>
-        <% Profil.all do |profil|%>
-            <option ><%= profil.title %></option>
-        <% end %>
-    </select>
+
     </div>
     <div class="actions">
         <%= f.submit %>

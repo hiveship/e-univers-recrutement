@@ -16,11 +16,12 @@ class Admin::SessionsController < Admin::AdminController
   def create
     @session = Session.new params.require(:session).permit(:title, :description, :beginDate, :endDate)
     @session.state = Session::ACTIVATE
-    @session.id_profil = params[:profil]
+    @session.profil = params[:profil]
     respond_to do |format|
       if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @session }
+        flash[:success] = "La session a bien été créée !"
+        format.html { redirect_to @session}
+        format.json { head :no_content }
       else
         format.html { render action: 'new' }
         format.json { render json: @session.errors, status: :unprocessable_entity }
