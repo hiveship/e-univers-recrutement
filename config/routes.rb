@@ -22,7 +22,6 @@ Recrutement::Application.routes.draw do
 
   end
 
-
   get '/login' => 'site#login'
   post '/login' => 'site#auth'
   get '/logout' => 'site#logout'
@@ -33,17 +32,11 @@ Recrutement::Application.routes.draw do
 
   resources :user, only: [:update, :edit]
 
-  resources :sessions do
-    resources :profils
-    resources :candidatures
-    post :deactivate
-    post :activate
-  end
+  resources :sessions
 
   resources :candidatures do
     resources :evaluations
   end
-
 
   root to: 'sessions#index'
 

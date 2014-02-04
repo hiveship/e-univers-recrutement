@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
       if @me.state == User::DEACTIVATE
         flash[:error] = "Erreur, votre compte est désactivé. Veuillez contacter un adminisateur."
         redirect_to :login
-
       end
     else
       redirect_to :login

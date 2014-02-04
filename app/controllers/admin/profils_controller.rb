@@ -1,35 +1,24 @@
 class Admin::ProfilsController < Admin::AdminController
-  before_action :set_profil, only: [:show, :edit, :update, :destroy]
 
-  # GET /profils
-  # GET /profils.json
   def index
     @profils = Profil.all
   end
 
-  # GET /profils/1
-  # GET /profils/1.json
-  def show
-  end
-
-  # GET /profils/new
   def new
     @profil = Profil.new
   end
 
-  # GET /profils/1/edit
   def edit
+    @profil = Profil.find(params[:id])
   end
 
-  # POST /profils
-  # POST /profils.json
   def create
-    @profil = Profil.new(profil_params)
-
+    @profil = Profil.new params.require(:profil).permit(:title, :description)
     respond_to do |format|
       if @profil.save
-        format.html { redirect_to @profil, notice: 'Profil was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @profil }
+        flash[:success] = "Profil de poste créé avec succès !"
+        format.html { redirect_to admin_profils_path}
+        format.json { head :no_content }
       else
         format.html { render action: 'new' }
         format.json { render json: @profil.errors, status: :unprocessable_entity }
@@ -37,12 +26,12 @@ class Admin::ProfilsController < Admin::AdminController
     end
   end
 
-  # PATCH/PUT /profils/1
-  # PATCH/PUT /profils/1.json
   def update
+    @profil = Profil.find(params[:id])
     respond_to do |format|
-      if @profil.update(profil_params)
-        format.html { redirect_to @profil, notice: 'Profil was successfully updated.' }
+      if @profil.update params.require(:profil).permit(:title, :description)
+        flash[:success] = "Le profil de poste a bien été modifié !"
+        format.html { redirect_to admin_profils_path}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -51,24 +40,12 @@ class Admin::ProfilsController < Admin::AdminController
     end
   end
 
-  # DELETE /profils/1
-  # DELETE /profils/1.json
   def destroy
-    @profil.destroy
+    Profil.find(params[:id]).destroy!
     respond_to do |format|
-      format.html { redirect_to profils_url }
+      format.html { redirect_to admin_profils_path }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profil
-      @profil = Profil.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def profil_params
-      params.require(:profil).permit(:title, :description)
-    end
 end

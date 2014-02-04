@@ -16,9 +16,8 @@
       <tr>
         <td><%= profil.title %></td>
         <td><%= profil.description %></td>
-        <td><%= link_to 'Show', profil %></td>
-        <td><%= link_to 'Edit', edit_profil_path(profil) %></td>
-        <td><%= link_to 'Destroy', profil, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Modifier', edit_admin_profil_path(profil), method: :get %></td>
+        <td><%= link_to 'Destroy', admin_profil_path(profil), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Profil', new_admin_profil_path %>
+<%= link_to 'Nouveau profil de poste', new_admin_profil_path %>
