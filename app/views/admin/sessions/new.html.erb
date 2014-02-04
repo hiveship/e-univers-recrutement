@@ -14,8 +14,8 @@
     <% end %>
 
     <div class="field">
-        Profil de poste:<br>
-        <%= select("post", "Profil de poste", Profil.all.collect { |p| [p.title] }) %><br>
+        <%= f.label :profil_id %>
+        <%= select("post","profil_id", Profil.all.collect { |profil| [profil.title, profil.id] }) %><br>
     </div>
 
     <div class="field">

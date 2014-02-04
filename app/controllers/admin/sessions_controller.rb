@@ -14,13 +14,12 @@ class Admin::SessionsController < Admin::AdminController
   end
 
   def create
-    @session = Session.new params.require(:session).permit(:title, :description, :beginDate, :endDate)
+    @session = Session.new params.require(:session).permit(:title, :description, :beginDate, :endDate, :profil_id)
     @session.state = Session::ACTIVATE
-    @session.profil = params[:profil]
     respond_to do |format|
       if @session.save
         flash[:success] = "La session a bien été créée !"
-        format.html { redirect_to @session}
+        format.html { redirect_to admin_sessions_path}
         format.json { head :no_content }
       else
         format.html { render action: 'new' }
@@ -33,7 +32,8 @@ class Admin::SessionsController < Admin::AdminController
     @session = Session.find params[:id]
     respond_to do |format|
       if @session.update params.require(:session).permit(:title, :description, :beginDate, :endDate)
-        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
+        flash[:success] = "La session a bien été modifiée !"
+        format.html { redirect_to admin_sessions_path }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -45,7 +45,7 @@ class Admin::SessionsController < Admin::AdminController
   def destroy
     Session.find(params[:id]).destroy!
     respond_to do |format|
-      format.html { redirect_to sessions_url }
+      format.html { redirect_to admin_sessions_path }
       format.json { head :no_content }
     end
   end

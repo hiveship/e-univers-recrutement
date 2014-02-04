@@ -9,12 +9,17 @@
         <th>Enddate</th>
         <th>State</th>
         <th>Description</th>
+        <th></th>
+        <th></th>
+        <th></th>
+
     </tr>
     </thead>
 
     <tbody>
     <% @sessions.each do |session| %>
         <tr>
+
             <td><%= session.title %></td>
             <td><%= session.beginDate %></td>
             <td><%= session.endDate %></td>
