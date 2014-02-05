@@ -17,7 +17,7 @@ class Admin::ProfilsController < Admin::AdminController
     respond_to do |format|
       if @profil.save
         flash[:success] = "Profil de poste créé avec succès !"
-        format.html { redirect_to admin_profils_path}
+        format.html { redirect_to admin_profils_path }
         format.json { head :no_content }
       else
         format.html { render action: 'new' }
@@ -31,7 +31,7 @@ class Admin::ProfilsController < Admin::AdminController
     respond_to do |format|
       if @profil.update params.require(:profil).permit(:title, :description)
         flash[:success] = "Le profil de poste a bien été modifié !"
-        format.html { redirect_to admin_profils_path}
+        format.html { redirect_to admin_profils_path }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -41,10 +41,14 @@ class Admin::ProfilsController < Admin::AdminController
   end
 
   def destroy
-    Profil.find(params[:id]).destroy!
-    respond_to do |format|
-      format.html { redirect_to admin_profils_path }
-      format.json { head :no_content }
+    @profil = Profil.find params[:id]
+    if @profil.sessions.empty?
+      @profil.destroy!
+      flash[:success] = "Le profil de poste a bien été supprimé !"
+      redirect_to admin_profils_path
+    else
+      flash[:error] = "Ce profil de poste est lié à au moins une session de recrutement !"
+      redirect_to admin_profils_path
     end
   end
 

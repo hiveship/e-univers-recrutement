@@ -15,7 +15,7 @@
 
     <div class="field">
         <%= f.label :profil_id %>
-        <%= select("post","profil_id", Profil.all.collect { |profil| [profil.title, profil.id] }) %><br>
+        <%= select("session", "profil_id", Profil.all.collect { |profil| [profil.title, profil.id] }) %><br>
     </div>
 
     <div class="field">

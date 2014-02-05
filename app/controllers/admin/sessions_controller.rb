@@ -54,21 +54,21 @@ class Admin::SessionsController < Admin::AdminController
     @session = Session.find params[:id]
     if @session.state == Session::DEACTIVATE
       @session.update_columns :state => Session::ACTIVATE
-      flash[:success] = "La session a bien été bloqué !"
+      flash[:success] = "La session a bien été relancée !"
     else
       flash[:error] = "La session est déjà actif !"
     end
-    redirect_to :sessions
+    redirect_to admin_sessions_path
   end
 
   def deactivate
     @session = Session.find params[:id]
     if @session.state == Session::ACTIVATE
       @session.update_columns :state => Session::DEACTIVATE
-      flash[:success] = "La session a bien été relancée !"
+      flash[:success] = "La session a bien été bloqué !"
     else
       flash[:error] = "La session est déjà bloquée !"
     end
-    redirect_to :sessions
+    redirect_to admin_sessions_path
   end
 end

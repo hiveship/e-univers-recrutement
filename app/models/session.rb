@@ -1,13 +1,10 @@
 class Session < ActiveRecord::Base
-  PLANNED = "planned"
-  CLOSED = "closed"
-  PENDING = "pending"
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
 
   validates_presence_of :description, :title, :endDate, :beginDate
-  validates :title, :length => 1..50
-  validate :validate_end_date, :validate_begin_date
+  validates :title, :length => 1..30
+#  validate :validate_end_date, :validate_begin_date
 
   belongs_to :profil
   has_many :candidatures
@@ -32,11 +29,11 @@ class Session < ActiveRecord::Base
 
   def get_status
     if self.beginDate > Date.today
-      Session::PLANNED
+      :planned
     elsif self.endDate < Date.today
-      Session::CLOSED
+      :closed
     else
-      Session::PENDING
+      :pending
     end
   end
 

@@ -1,34 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @session.title %>
+    <strong>Titre de la session:</strong>
+    <%= @session.title %>
+</p>
+<p>
+    <strong>Poste concerné:</strong>
+    <%= @session.profil.title %>
+</p>
+<p>
+    <strong>Date d'ouverture des candidatures:</strong>
+    <%= @session.beginDate %>
 </p>
 
 <p>
-  <strong>Begindate:</strong>
-  <%= @session.beginDate %>
+    <strong>Date de fin des candidatures:</strong>
+    <%= @session.endDate %>
 </p>
 
 <p>
-  <strong>Enddate:</strong>
-  <%= @session.endDate %>
+    <strong>Description du poste concerné:</strong>
+    <%= @session.profil.description %>
 </p>
 
 <p>
-  <strong>State:</strong>
-  <%= @session.state %>
+    <strong>Description de la session de recrutement:</strong>
+    <%= @session.description %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @session.description %>
-</p>
-
-<p>
-  <strong>Id profil:</strong>
-  <%= @session.id_profil %>
-</p>
-
-<%= link_to 'Edit', edit_session_path(@session) %> |
-<%= link_to 'Back', sessions_path %>
+<%= link_to 'Postuler', new_candidature_path(@session) %> |
+<%= link_to 'Liste des sessions en cours', sessions_path %>
