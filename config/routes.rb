@@ -19,7 +19,6 @@ Recrutement::Application.routes.draw do
     end
 
     resources :profils
-
   end
 
   get '/login' => 'site#login'
