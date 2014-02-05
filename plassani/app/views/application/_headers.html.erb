@@ -1,81 +1,9 @@
-
 <header class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-
-            <% if @me %>
-                <%= link_to sessions_path, class: %w(brand) do %>
-                    E-Univers
-                <% end %>
-                <% if (@me.status == User::ADMIN ||@me.status == User::RECRUTEUR)  %>
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <%= link_to sessions_path, class: "link" do %>
-                                <i class="icon-list"></i>
-                                Gestion des Sessions
-                            <% end %>
-                        </li>
-
-                        <% if @me.status == User::ADMIN  %>
-                            <li>
-
-                                <%= link_to users_path, class: "link" do %>
-                                    <i class="icon-wrench"></i>
-                                    Gestion des Comptes
-                                <% end %>
-                            </li>
-                            <li>
-
-                                <%= link_to profils_path, class: "link" do %>
-                                    <i class="icon-wrench"></i>
-                                    Gestion des profil de poste
-                                <% end %>
-                            </li>
-
-                        <% end %>
-
-                        <% if @me.status == User::RECRUTEUR %>
-                            <li>
-                                <%=link_to user_path(@me.id), class: "link" do %>
-                                    <i class="icon-wrench"></i>
-                                    Gérer mon Compte
-                                <% end %>
-                            </li>
-                        <% end %>
-                    </ul>
-                    <div>
-                <% end %>
-                <ul class="nav pull-right">
-                    <li>
-                        <%= link_to logout_path, class: %w(navbar-link) do %>
-                            <i class="icon-signout"></i>
-                            <%= t 'Deconnexion' %>
-                        <% end %>
-                    </li>
-                    <li>
-                        <a>
-                            <i class="icon-user"></i>
-                            <%= @me.login %>
-                        </a>
-                    </li>
-                </ul>
-            <% else %>
-                <%= link_to root_path, class: %w(brand) do %>
-                    E-Univers
-                <% end %>
-                <ul class="nav navbar-nav">
-                <li>
-
-                    <%= link_to root_path, class: "link" do %>
-                        <i class="icon-wrench"></i>
-                        Sessions
-                    <% end %>
-                </li>
-                </ul>
-
-
+            <%= link_to root_path, class: %w(brand) do %>
+                E-Univers
             <% end %>
-            </div>
         </div>
     </div>
 </header>

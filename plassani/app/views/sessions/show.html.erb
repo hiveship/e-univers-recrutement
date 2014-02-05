@@ -1,20 +1,34 @@
+<p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Title:</strong>
+  <%= @session.title %>
+</p>
 
-<%- model_class = Session -%>
-<div class="page-header">
-    <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+<p>
+  <strong>Begindate:</strong>
+  <%= @session.beginDate %>
+</p>
 
-<dl class="dl-horizontal">
-    <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-    <dd><%= @session.title %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:beginDate) %>:</strong></dt>
-    <dd><%= @session.beginDate %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:endDate) %>:</strong></dt>
-    <dd><%= @session.endDate %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-    <dd><%= @session.description %></dd>
+<p>
+  <strong>Enddate:</strong>
+  <%= @session.endDate %>
+</p>
 
-</dl>
+<p>
+  <strong>State:</strong>
+  <%= @session.state %>
+</p>
 
+<p>
+  <strong>Description:</strong>
+  <%= @session.description %>
+</p>
 
+<p>
+  <strong>Id profil:</strong>
+  <%= @session.id_profil %>
+</p>
+
+<%= link_to 'Edit', edit_session_path(@session) %> |
+<%= link_to 'Back', sessions_path %>

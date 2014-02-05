@@ -16,15 +16,15 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create user" do
+  test "should create users" do
     assert_difference('User.count') do
-      post :create, user: { login: @user.login, mail: @user.mail, pass: @user.pass, state: @user.state, status: @user.status }
+      post :create, users: { login: @user.login, mail: @user.mail, pass: @user.pass, state: @user.state, status: @user.status }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to user_path(assigns(:users))
   end
 
-  test "should show user" do
+  test "should show users" do
     get :show, id: @user
     assert_response :success
   end
@@ -34,12 +34,12 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update user" do
-    patch :update, id: @user, user: { login: @user.login, mail: @user.mail, pass: @user.pass, state: @user.state, status: @user.status }
-    assert_redirected_to user_path(assigns(:user))
+  test "should update users" do
+    patch :update, id: @user, users: { login: @user.login, mail: @user.mail, pass: @user.pass, state: @user.state, status: @user.status }
+    assert_redirected_to user_path(assigns(:users))
   end
 
-  test "should destroy user" do
+  test "should destroy users" do
     assert_difference('User.count', -1) do
       delete :destroy, id: @user
     end

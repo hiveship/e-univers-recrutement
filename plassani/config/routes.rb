@@ -1,5 +1,27 @@
 Recrutement::Application.routes.draw do
 
+  namespace :admin do
+    resources :users do
+      member do
+        post :reset_password
+        post :activate
+        post :deactivate
+        post :set_recruteur
+        post :set_admin
+      end
+    end
+
+    resources :sessions do
+      member do
+        post :activate
+        post :deactivate
+      end
+    end
+
+    resources :profils
+
+  end
+
   get '/login' => 'site#login'
   post '/login' => 'site#auth'
   get '/logout' => 'site#logout'
@@ -8,22 +30,15 @@ Recrutement::Application.routes.draw do
 
   resources :evaluations
 
-  resources :users do
-    post :reset_password
-    post :activate
-    post :deactivate
-    post :set_recruteur
-    post :set_admin
+  resources :user, only: [:update, :edit]
+
+  resources :sessions
+
+  resources :candidatures do
+    resources :evaluations
   end
 
-  resources :sessions do
-    post :show
-
-  end
-
-  resources :candidatures
-
-  root to: 'sessions#home'
+  root to: 'sessions#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  skip_before_filter :require_login, only: %i(login auth)
+  skip_before_filter :require_login, only:[:login, :auth]
 
   def auth
     login = params[:login]
@@ -8,7 +8,7 @@ class SiteController < ApplicationController
     if @me
       session[:me] = @me.id
       flash[:success] = "Authentification réussie !"
-      redirect_to :sessions
+      redirect_to [ @me.status,:sessions ] # avec @me.status = "admin" ou "recruteur" -> directement dans l URL
     end
   rescue
     flash[:error] = "Erreur d'authentification."

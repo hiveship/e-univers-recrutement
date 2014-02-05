@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plate-forme de recrutement E-Univers</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+</head>
+
+
+<%= render 'recruteurheaders' %>
+<br> <br>   <br>
+<%= render 'flashs' %>
+
+<div class="container">
+    <%= yield %>
+    LAYOUT RECRUTEUR
+</div>
+
+</html>

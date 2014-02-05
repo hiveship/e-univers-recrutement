@@ -1,0 +1,2 @@
+module Recruteur::SessionsHelper
+end

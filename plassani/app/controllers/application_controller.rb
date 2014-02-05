@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_filter :require_login, :except => [:auth, :login,:home ]
 
   def require_login
     if session[:me]
@@ -8,7 +7,6 @@ class ApplicationController < ActionController::Base
       if @me.state == User::DEACTIVATE
         flash[:error] = "Erreur, votre compte est désactivé. Veuillez contacter un adminisateur."
         redirect_to :login
-
       end
     else
       redirect_to :login
@@ -18,7 +16,7 @@ class ApplicationController < ActionController::Base
   def have_admin_rights
     if  @me.status != User::ADMIN
       flash[:error] = "Erreur, cette page est réservée aux administrateurs."
-      redirect_to :sessions
+      redirect_to root_path
     end
   end
 

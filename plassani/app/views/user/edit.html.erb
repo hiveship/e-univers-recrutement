@@ -1,0 +1,39 @@
+<h1>Votre compte</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Login:</strong>
+    <%= @user.login %>
+</p>
+<p>
+    <strong>Mail:</strong>
+    <%= @user.mail %>
+</p>
+<p>
+    <strong>Vous êtes:</strong>
+    <%= @user.status %>
+</p>
+
+<%= form_for(@user, url: user_path(@user), method: "patch") do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+            <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        Nouveau password:
+        <%= f.password_field :pass %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
+

@@ -1,0 +1,34 @@
+<header class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <%= link_to recruteur_sessions_path, class: %w(brand) do %>
+                E-Univers
+            <% end %>
+            <ul class="nav navbar-nav">
+                <li>
+                    <%= link_to recruteur_sessions_path, class: "link" do %>
+                        <i class="icon-list"></i>
+                        Gestion des Sessions
+                    <% end %>
+                </li>
+            </ul>
+            <div>
+                <ul class="nav pull-right">
+                    <li>
+                        <%= link_to logout_path, class: %w(navbar-link) do %>
+                            <i class="icon-signout"></i>
+                            <%= t 'Deconnexion' %>
+                        <% end %>
+                    </li>
+
+                    <li>
+                        <%= link_to edit_recruteur_user_path(@me), class: %w(navbar-link) do %>
+                            <i class="icon-user"></i>
+                            <%= t @me.login %>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

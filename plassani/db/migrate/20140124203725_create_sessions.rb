@@ -6,7 +6,7 @@ class CreateSessions < ActiveRecord::Migration
       t.date :endDate
       t.string :state
       t.string :description
-      t.integer :id_profil
+      t.belongs_to :profil
 
       t.timestamps
     end
