@@ -1,4 +1,5 @@
 class Session < ActiveRecord::Base
+
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
 

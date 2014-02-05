@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+<<<<<<< HEAD
     <strong>Titre de la session:</strong>
     <%= @session.title %>
 </p>
@@ -30,3 +31,36 @@
 
 <%= link_to 'Postuler', new_candidature_path(@session) %> |
 <%= link_to 'Liste des sessions en cours', sessions_path %>
+=======
+  <strong>Title:</strong>
+  <%= @session.title %>
+</p>
+
+<p>
+  <strong>Begindate:</strong>
+  <%= @session.beginDate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @session.endDate %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @session.state %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @session.description %>
+</p>
+
+<p>
+  <strong>Id profil:</strong>
+  <%= @session.id_profil %>
+</p>
+
+<%= link_to 'Edit', edit_session_path(@session) %> |
+<%= link_to 'Back', sessions_path %>
+>>>>>>> plassani

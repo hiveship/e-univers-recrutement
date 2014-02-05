@@ -14,16 +14,17 @@
     <% end %>
 
     <div class="field">
+
+        <%= f.label :status %>
+        <%= f.select(:status, options_for_select([['Recruteur', User::RECRUTEUR],['Administrateur', User::ADMIN]])) %>
+    </div>
+    <div class="field">
         <%= f.label :login %><br>
         <%= f.text_field :login %>
     </div>
     <div class="field">
         <%= f.label :mail %><br>
         <%= f.text_field :mail %>
-    </div>
-    <div class="field">
-        <%= f.label :status %><br>
-        <%= f.text_field :status %>
     </div>
     <div class="actions">
         <%= f.submit %>

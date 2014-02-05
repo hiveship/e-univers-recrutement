@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
-  ADMIN = "administrator"
-  RECRUTEUR = "recruiter"
+  ADMIN = "admin"
+  RECRUTEUR = "recruteur"
+  MANAGER = "manager"
+
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
 
   validates_presence_of :mail, :login, :status, :state, :pass
-  validates_uniqueness_of :mail, :login
+  #validates_uniqueness_of :mail, :login
   validates :login, :length => 3..10
 
   has_many :evaluations

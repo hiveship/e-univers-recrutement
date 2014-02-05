@@ -1,0 +1,43 @@
+
+
+    <%= form_for(@user) do |f| %>
+        <% if @user.errors.any? %>
+            <div id="flash" class="container">
+                <div class="alert alert-error fade in">
+                    <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
+
+                    <ul>
+                        <% @user.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
+        <div class="hero-unit">
+            <h3>Nouvel utilisateur</h3>
+            <br>
+        <div class="field">
+            <%= f.label :status %>
+            <%= f.select(:status, options_for_select([['Administrateur', User::ADMIN], ['Recruteur', User::RECRUTEUR]])) %>
+        </div>
+        <div class="field">
+            <%= f.label :login %>
+            <%= f.text_field :login %>
+        </div>
+        <div class="field">
+            <%= f.label :mail %>
+            <%= f.text_field :mail %>
+        </div>
+
+
+        <div class="actions">
+            <%= f.submit 'Valider', :class => 'btn' %>
+        </div>
+    <% end %>
+
+
+
+
+<%= link_to 'Retour', users_path, class: "btn pull-right"  %>
+</div>

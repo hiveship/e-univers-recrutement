@@ -17,7 +17,7 @@ class Admin::ProfilsController < Admin::AdminController
     respond_to do |format|
       if @profil.save
         flash[:success] = "Profil de poste créé avec succès !"
-        format.html { redirect_to admin_profils_path }
+        format.html { redirect_to admin_profils_path}
         format.json { head :no_content }
       else
         format.html { render action: 'new' }

@@ -1,4 +1,5 @@
 class Admin::SessionsController < Admin::AdminController
+
   def index
     @sessions = Session.all
   end
@@ -50,12 +51,8 @@ class Admin::SessionsController < Admin::AdminController
         SessionMailer.cancel(candidature).deliver
       end
     end
-    Session.find(params[:id]).destroy!
-    respond_to do |format|
-      format.html { redirect_to admin_sessions_path }
-      format.json { head :no_content }
-    end
   end
+
 
   def activate
     @session = Session.find params[:id]
