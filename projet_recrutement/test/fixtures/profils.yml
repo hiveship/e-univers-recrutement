@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  profil_title: MyString
-  profil_description: MyString
-
-two:
-  profil_title: MyString
-  profil_description: MyString
