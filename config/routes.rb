@@ -21,6 +21,19 @@ Recrutement::Application.routes.draw do
     resources :profils
   end
 
+  namespace :recruteur do
+    resources :sessions do
+      member do
+        post :activate
+        post :deactivate
+      end
+    end
+    resources :candidatures
+    resources :evaluations
+    resources :users
+  end
+
+
   get '/login' => 'site#login'
   post '/login' => 'site#auth'
   get '/logout' => 'site#logout'
