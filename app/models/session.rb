@@ -4,7 +4,7 @@ class Session < ActiveRecord::Base
 
   validates_presence_of :description, :title, :endDate, :beginDate
   validates :title, :length => 1..30
-#  validate :validate_end_date, :validate_begin_date
+  validate :validate_end_date, :validate_begin_date
 
   belongs_to :profil
   has_many :candidatures

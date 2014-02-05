@@ -15,7 +15,8 @@
 
     <div class="field">
         <%= f.label :profil_id %>
-        <%= select("session", "profil_id", Profil.all.collect { |profil| [profil.title, profil.id] }) %><br>
+        <%= select("session", "profil_id", Profil.all.collect { |profil| [profil.title, profil.id] })%>
+        <%= link_to 'Créer un nouveau profil', new_admin_profil_path, class: "btn pull" %>
     </div>
 
     <div class="field">

@@ -43,6 +43,13 @@ class Admin::SessionsController < Admin::AdminController
   end
 
   def destroy
+    @session = Session.find (params[:id])
+    if @session.get_status == :pending
+      @session.candidatures.each do |candidature|
+        SessionMailer.cancel(candidature).deliver
+      end
+
+    end
     Session.find(params[:id]).destroy!
     respond_to do |format|
       format.html { redirect_to admin_sessions_path }

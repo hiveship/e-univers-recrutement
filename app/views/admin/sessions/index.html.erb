@@ -1,13 +1,15 @@
 <h1>Liste des sessions de recrutement</h1>
 
-<table>
+<%= link_to 'Nouvelle session', new_admin_session_path, class: "btn pull-right" %>
+<br>
+<br>
+<table class="table table-hover">
     <thead>
     <tr>
-        <th>Poste</th>
-        <th>Title</th>
-        <th>Begindate</th>
-        <th>Enddate</th>
-        <th>Description</th>
+        <th>Poste concerné</th>
+        <th>Titre de la session</th>
+        <th>Date de début</th>
+        <th>Date de clotûre</th>
         <th></th>
         <th></th>
         <th></th>
@@ -16,31 +18,48 @@
     </thead>
 
     <tbody>
+
     <% @sessions.each do |session| %>
-        <tr>
-            <td><%= session.profil.title %></td>
-            <td><%= session.title %></td>
-            <td><%= session.beginDate %></td>
-            <td><%= session.endDate %></td>
-            <td><%= session.description %></td>
-            <td><%= link_to 'Modifier', edit_admin_session_path(session) %></td>
-            <td><%= link_to 'Supprimer', admin_session_path(session), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-            <% if session.state == Session::ACTIVATE %>
-                <td>
-                    <i class="icon-eye-open"></i>
-                    <%= link_to("Suspendre la session", deactivate_admin_session_path(session), method: :post) %>
-                </td>
-            <% else %>
-                <td>
-                    <i class="icon-eye-close"></i>
-                    <%= link_to("Relancer la session", activate_admin_session_path(session), method: :post) %>
-                </td>
-            <% end %>
+        <% if session.get_status == :pending %>
+            <tr class="info">
+        <% end %>
+        <td><%= session.profil.title %></td>
+        <td><%= session.title %></td>
+        <td><%= session.beginDate %></td>
+        <td><%= session.endDate %></td>
+        <% if session.get_status == :pending %>
+            <td>
+                Session en cours
+            </td>
+        <% elsif session.get_status == :planned %>
+            <td>
+                Session prévue
+            </td>
+        <% else %>
+            <td>
+                Session terminée
+            </td>
+        <% end %>
+        <td><i class="icon-pencil"></i><%= link_to 'Voir détails', admin_session_path(session), method: :get %></td>
+        <td><i class="icon-pencil"></i><%= link_to 'Modifier', edit_admin_session_url(session), method: :get %></td>
+        <td>
+            <i class="icon-remove-sign"></i> <%= link_to 'Supprimer', admin_session_path(session), method: :delete, data: {confirm: 'Confirmer la suppression ?'} %>
+        </td>
+        <% if session.state == Session::ACTIVATE %>
+            <td>
+                <i class="icon-eye-open"></i>
+                <%= link_to("Suspendre", deactivate_admin_session_path(session), method: :post) %>
+            </td>
+        <% else %>
+            <td>
+                <i class="icon-eye-close"></i>
+                <%= link_to("Relancer", activate_admin_session_path(session), method: :post) %>
+            </td>
+        <% end %>
+
         </tr>
     <% end %>
+
     </tbody>
+
 </table>
-
-<br>
-
-<%= link_to 'Ajouter une session de recrutement', new_admin_session_path %>
