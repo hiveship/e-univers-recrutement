@@ -4,65 +4,7 @@
             <%= link_to root_path, class: %w(brand) do %>
                 E-Univers
             <% end %>
-<<<<<<< HEAD
-            <% if @me %>
-                <% if (@me.status == User::ADMIN || @me.status == User::RECRUTEUR) %>
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <%= link_to admin_sessions_path, class: "link" do %>
-                                <i class="icon-list"></i>
-                                Gestion des Sessions
-                            <% end %>
-                        </li>
-
-                        <% if @me.status == User::ADMIN %>
-                            <li>
-                                <%= link_to admin_users_path, class: "link" do %>
-                                    <i class="icon-wrench"></i>
-                                    Gestion des Comptes
-                                <% end %>
-                            </li>
-                        <% end %>
-
-                        <% if @me.status == User::RECRUTEUR %>
-                            <li>
-                                <%= link_to edit_user_path(@me.id), class: "link" do %>
-                                    <i class="icon-wrench"></i>
-                                    Gérer mon Compte
-                                <% end %>
-                            </li>
-                        <% end %>
-                    </ul>
-                    <div>
-                <% end %>
-                <ul class="nav pull-right">
-                    <li>
-                        <%= link_to logout_path, class: %w(navbar-link) do %>
-                            <i class="icon-signout"></i>
-                            <%= t 'Deconnexion' %>
-                        <% end %>
-                    </li>
-
-                    <li>
-                        <%= link_to edit_user_path(@me), class: %w(navbar-link) do %>
-                            <i class="icon-user"></i>
-                            <%= t @me.login %>
-                        <% end %>
-                    </li>
-                </ul>
-            <% else %>
-                <ul class="nav pull-right">
-                    <li>
-                        <a href="#modal-login" data-toggle="modal" class="navbar-link">
-                            <i class="icon-signin"></i>
-                            <%= t 'Connexion' %>
-                        </a>
-                    </li>
-                </ul>
-            <% end %>
             </div>
-=======
->>>>>>> plassani
         </div>
     </div>
 </header>

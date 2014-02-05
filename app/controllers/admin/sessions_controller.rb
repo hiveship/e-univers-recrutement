@@ -44,13 +44,13 @@ class Admin::SessionsController < Admin::AdminController
   end
 
   def destroy
-    @session = Session.find (params[:id])
-    if @session.get_status == :pending
-      @session.candidatures.each do |candidature|
-        # On préviens tout les candidats à la session de son annulation (uniquement pour les sessions en cours)
-        SessionMailer.cancel(candidature).deliver
-      end
+    Session.find(params[:id]).destroy!
+    flash[:success]=" La session a bien été supprimée !"
+    respond_to do |format|
+      format.html { redirect_to admin_sessions_path }
+      format.json { head :no_content }
     end
+
   end
 
 
