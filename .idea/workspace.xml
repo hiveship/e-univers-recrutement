@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5948edc-5995-4a7f-9666-46a72b14db51" name="Default" comment="Créations de sessions à partir d'un profil de poste donné. Tests lors de la suppression d'un profil de poste.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/candidature.rb" afterPath="$PROJECT_DIR$/app/models/candidature.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/sessions/index.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/sessions/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/sessions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/sessions/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/session.rb" afterPath="$PROJECT_DIR$/app/models/session.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/session_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/session_mailer.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb" />
     </list>
     <ignored path="recrutement.iws" />
@@ -91,10 +88,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="5" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.51974386" vertical-offset="368" max-vertical-offset="1305">
+            <state line="49" column="40" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0" vertical-offset="338" max-vertical-offset="1305">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_mailer.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="9" selection-start="40" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="session_mailer.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/mailers/session_mailer.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="232" selection-end="232" vertical-scroll-proportion="0.1280683" vertical-offset="0" max-vertical-offset="937">
               <folding />
             </state>
           </provider>
@@ -113,7 +128,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/user_mailer/destroy.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/deactivate.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/activate.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/reset_password" />
@@ -164,6 +178,7 @@
         <option value="$PROJECT_DIR$/app/models/session.rb" />
         <option value="$PROJECT_DIR$/app/models/candidature.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/app/mailers/session_mailer.rb" />
       </list>
     </option>
   </component>
@@ -175,7 +190,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1365" />
+    <option name="x" value="-1" />
     <option name="y" value="26" />
     <option name="width" value="1922" />
     <option name="height" value="1055" />
@@ -373,6 +388,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recrutement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recrutement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mailers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -957,15 +990,15 @@
       <workItem from="1391432016053" duration="3133000" />
       <workItem from="1391534483814" duration="15234000" />
       <workItem from="1391555567419" duration="310000" />
-      <workItem from="1391601702767" duration="5754000" />
+      <workItem from="1391601702767" duration="7335000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100845000" />
+    <option name="totallyTimeSpent" value="102426000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1365" y="26" width="1922" height="1055" extended-state="6" />
+    <frame x="-1" y="26" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1023,13 +1056,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="27" selection-start="1917" selection-end="1917" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1065">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="2" selection-start="95" selection-end="95" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="465" />
@@ -1082,11 +1108,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/user_mailer/activate.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="6" selection-start="250" selection-end="250" vertical-scroll-proportion="0.18032786" vertical-offset="0" max-vertical-offset="915" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="16" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user_mailer/reset_password.html.erb">
@@ -1319,9 +1340,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="9" selection-start="40" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="5" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.51974386" vertical-offset="368" max-vertical-offset="1305">
+        <state line="49" column="40" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0" vertical-offset="338" max-vertical-offset="1305">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/session_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="232" selection-end="232" vertical-scroll-proportion="0.1280683" vertical-offset="0" max-vertical-offset="937">
           <folding />
         </state>
       </provider>

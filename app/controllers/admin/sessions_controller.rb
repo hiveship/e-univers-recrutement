@@ -46,9 +46,9 @@ class Admin::SessionsController < Admin::AdminController
     @session = Session.find (params[:id])
     if @session.get_status == :pending
       @session.candidatures.each do |candidature|
+        # On préviens tout les candidats à la session de son annulation (uniquement pour les sessions en cours)
         SessionMailer.cancel(candidature).deliver
       end
-
     end
     Session.find(params[:id]).destroy!
     respond_to do |format|
