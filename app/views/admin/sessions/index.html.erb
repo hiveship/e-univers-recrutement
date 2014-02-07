@@ -13,11 +13,11 @@
         <th>Date de clotûre</th>
 
 
-    <% @sessions.each do |session| %>
-        <% if session.get_status == :pending %>
+        <% @sessions.each do |session| %>
+            <% if session.get_status == :pending %>
             <tr class="info">
         <% end %>
-
+        <td><%= session.profil.title %></td>
         <td><%= session.title %></td>
         <td><%= session.beginDate %></td>
         <td><%= session.endDate %></td>
@@ -42,7 +42,7 @@
         <% if session.state == Session::ACTIVATE %>
             <td>
                 <i class="icon-eye-open"></i>
-                <%= link_to("Suspendre", deactivate_admin_session_path(session), method: :post) %>
+                <%= link_to("Suspendre", deactivate_admin_session_path(session), method: :post) %></td>
             </td>
         <% else %>
             <td>

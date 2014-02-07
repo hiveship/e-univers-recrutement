@@ -8,8 +8,11 @@ class SiteController < ApplicationController
     if @me
       session[:me] = @me.id
       flash[:success] = "Authentification réussie !"
-      redirect_to [ @me.status,:sessions ] # avec @me.status = "admin" ou "recruteur" -> directement dans l URL
-
+      if @me.status == User::MANAGER
+        redirect_to recruteur_sessions_url
+      else
+        redirect_to [ @me.status,:sessions ] # avec @me.status = "admin" ou "recruteur" -> directement dans l URL
+      end
     end
   rescue
     flash[:error] = "Erreur d'authentification."

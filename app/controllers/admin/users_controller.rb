@@ -16,11 +16,12 @@ class Admin::UsersController < Admin::AdminController
     @user = User.new params.require(:user).permit(:login, :mail, :status)
     @user.pass = User.generate_random_password
     password = @user.pass
+    flash[:success] = password
     @user.state = User::ACTIVATE
     respond_to do |format|
       if @user.save
-        UserMailer.welcome(@user, password).deliver
-        flash[:success] = "L'utilisateur a bien été créé !"
+        #UserMailer.welcome(@user, password).deliver
+        #flash[:success] = "L'utilisateur a bien été créé !"
         format.html { redirect_to admin_users_path}
         format.json { head :no_content }
       else

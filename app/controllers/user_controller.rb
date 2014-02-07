@@ -1,5 +1,15 @@
 class UserController < ApplicationController
-  # Controler qui gère uniquement @me
+  # Controller qui ne gère que l'utilisateur connecté (@me)
+  before_filter :require_login
+  before_action :set_layout
+
+  def set_layout
+    if @me.status == User::RECRUTEUR || @me.status == User::MANAGER
+     render layout: "recruteur"
+    else
+     render layout: "admin"
+    end
+  end
 
   def edit
     @user = @me
@@ -11,7 +21,7 @@ class UserController < ApplicationController
     respond_to do |format|
       if  @user.save
         flash[:success] = "Votre mot de passe a bien été modifié !"
-        format.html { redirect_to edit_user_path}
+        format.html { redirect_to edit_user_path(@me) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
