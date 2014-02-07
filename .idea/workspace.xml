@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5948edc-5995-4a7f-9666-46a72b14db51" name="Default" comment="Créations de sessions à partir d'un profil de poste donné. Tests lors de la suppression d'un profil de poste.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/development.sqlite3.orig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/development.log.orig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/admin/users/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/admin/users/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/recruteur/user_controller.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/_form.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/edit.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/new.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/show.json.jbuilder" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/recruteur/users/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/users/edit.html.erb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/users/index.json.jbuilder" afterPath="$PROJECT_DIR$/app/views/admin/users/index.json.jbuilder" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/application/_adminheaders.html.erb" afterPath="$PROJECT_DIR$/app/views/application/_adminheaders.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/application/_recruteurheaders.html.erb" afterPath="$PROJECT_DIR$/app/views/application/_recruteurheaders.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/user/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/sessions/index.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/sessions/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/site_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/site_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/user_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/users/new.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/users/new.html.erb" />
     </list>
     <ignored path="recrutement.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,9 +70,18 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/recruteur/sessions_controller.rb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+            <state line="4" column="5" selection-start="59" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="363" max-vertical-offset="1260">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/admin/admin_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="2" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
               <folding />
             </state>
           </provider>
@@ -129,15 +114,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recruteur_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/recruteur/recruteur_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="3" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="user_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -147,37 +123,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/admin/sessions/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="21" selection-start="818" selection-end="818" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1725">
+            <state line="18" column="86" selection-start="693" selection-end="693" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="870">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/admin/sessions/edit.html.erb">
+      <file leaf-file-name="new.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/admin/users/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="795">
+            <state line="17" column="10" selection-start="641" selection-end="641" vertical-scroll-proportion="0.43220338" vertical-offset="0" max-vertical-offset="600">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="site_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="site_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/site_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="8" selection-start="455" selection-end="455" vertical-scroll-proportion="0.3110048" vertical-offset="0" max-vertical-offset="627">
+            <state line="13" column="8" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/admin/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="791" selection-end="791" vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="660">
+            <state line="21" column="19" selection-start="434" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2115">
               <folding />
             </state>
           </provider>
@@ -207,7 +183,6 @@
         <option value="$PROJECT_DIR$/app/views/admin/users/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/admin/users/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/admin/users/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/users_controller.rb" />
@@ -247,6 +222,7 @@
         <option value="$PROJECT_DIR$/app/views/candidatures/new.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/user_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/site_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/admin/users/new.html.erb" />
       </list>
     </option>
   </component>
@@ -431,6 +407,10 @@
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -455,6 +435,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sessions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveship" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveship" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1178,12 +1180,12 @@
       <workItem from="1391601702767" duration="7335000" />
       <workItem from="1391627132903" duration="137000" />
       <workItem from="1391633923859" duration="3421000" />
-      <workItem from="1391806401267" duration="4138000" />
+      <workItem from="1391806401267" duration="4376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110122000" />
+    <option name="totallyTimeSpent" value="110360000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-4" width="1368" height="773" extended-state="6" />
@@ -1244,11 +1246,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/admin/profils/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="840" selection-end="840" vertical-scroll-proportion="0.47645125" vertical-offset="0" max-vertical-offset="913" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20140124203742_create_evaluations.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="244" selection-end="244" vertical-scroll-proportion="0.19210246" vertical-offset="0" max-vertical-offset="937" />
@@ -1262,11 +1259,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/admin/profils/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="36" selection-start="757" selection-end="784" vertical-scroll-proportion="0.47645125" vertical-offset="0" max-vertical-offset="913" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/sessions/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="86" selection-start="693" selection-end="693" vertical-scroll-proportion="0.29572836" vertical-offset="0" max-vertical-offset="913" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
@@ -1370,11 +1362,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="598" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/admin/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="40" selection-start="434" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2100" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20140124203712_create_candidatures.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
@@ -1385,13 +1372,6 @@
     <entry file="file://$PROJECT_DIR$/db/migrate/20140124203734_create_users.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="235" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="554">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="5" selection-start="59" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
           <folding />
         </state>
       </provider>
@@ -1427,13 +1407,6 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/admin/admin_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="2" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
           <folding />
         </state>
       </provider>
@@ -1522,13 +1495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="824" selection-end="824" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="386" selection-end="451" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
@@ -1552,7 +1518,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/site_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="8" selection-start="455" selection-end="455" vertical-scroll-proportion="0.3110048" vertical-offset="0" max-vertical-offset="627">
+        <state line="13" column="8" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admin/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="19" selection-start="434" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2115">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admin/admin_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="2" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="5" selection-start="59" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="824" selection-end="824" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/sessions/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="86" selection-start="693" selection-end="693" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/users/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="10" selection-start="641" selection-end="641" vertical-scroll-proportion="0.43220338" vertical-offset="0" max-vertical-offset="600">
           <folding />
         </state>
       </provider>
