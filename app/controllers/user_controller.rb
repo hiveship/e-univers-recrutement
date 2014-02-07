@@ -1,5 +1,6 @@
 class UserController < ApplicationController
   # Controller qui ne gère que l'utilisateur connecté (@me)
+
   before_filter :require_login
   before_action :set_layout
 
@@ -21,7 +22,7 @@ class UserController < ApplicationController
     respond_to do |format|
       if  @user.save
         flash[:success] = "Votre mot de passe a bien été modifié !"
-        format.html { redirect_to edit_user_path(@me) }
+        format.html { redirect_to edit_user_path}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -29,5 +30,6 @@ class UserController < ApplicationController
       end
     end
   end
+
 
 end
