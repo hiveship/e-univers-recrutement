@@ -1,5 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_layout
+
+  def set_layout
+    if @me
+      if @me.status == User::RECRUTEUR || @me.status == User::MANAGER
+        render layout: "recruteur"
+      elsif @me.status == User::ADMIN
+        render layout: "admin"
+      end
+    else
+      render layout: "application"
+    end
+  end
 
   def require_login
     if session[:me]
