@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_layout , only: [:require_login,:have_admin_rights]
+
+
+  def set_layout
+    if @me
+      @me.status
+    end
+  end
 
   def require_login
     if session[:me]

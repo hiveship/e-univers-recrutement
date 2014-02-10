@@ -1,5 +1,4 @@
 class SiteController < ApplicationController
-  skip_before_filter :require_login, only:[:login, :auth]
 
   def auth
     login = params[:login]
