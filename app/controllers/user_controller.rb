@@ -18,16 +18,16 @@ class UserController < ApplicationController
 
   def update
     @user = @me
-    @user.update_password params[:user][:pass]
+    @user.update_password params[@me.login][:pass]
     respond_to do |format|
       if  @user.save
         flash[:success] = "Votre mot de passe a bien été modifié !"
-        format.html { redirect_to edit_user_path}
-        format.json { head :no_content }
+        redirect_to root_path
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:warning] = "pb!"
+        redirect_to root_path
       end
+      render 'edit'
     end
   end
 
