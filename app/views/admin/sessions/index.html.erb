@@ -11,11 +11,17 @@
         <th>Titre de la session</th>
         <th>Date de début</th>
         <th>Date de clotûre</th>
-
-
+        <th>    </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
         <% @sessions.each do |session| %>
             <% if session.get_status == :pending %>
             <tr class="info">
+        <% else %>
+            <tr>
         <% end %>
         <td><%= session.profil.title %></td>
         <td><%= session.title %></td>
@@ -50,8 +56,7 @@
                 <%= link_to("Relancer", activate_admin_session_path(session), method: :post) %>
             </td>
         <% end %>
-
-        </tr>
+    </tr>
     <% end %>
 
     </tbody>

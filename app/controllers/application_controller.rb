@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
 
 
   def set_layout
-    if @me
+    if @me.status==User::MANAGER
+      User::RECRUTEUR
+    else
       @me.status
     end
   end

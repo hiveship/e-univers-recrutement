@@ -29,9 +29,13 @@
             <td>
                 Administrateur
             </td>
-        <% else %>
+        <% elsif user.status == User::RECRUTEUR%>
             <td>
                 Recruteur
+            </td>
+        <% else %>
+            <td>
+                Manager
             </td>
         <% end %>
 
