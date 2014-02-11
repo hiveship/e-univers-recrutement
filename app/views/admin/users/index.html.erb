@@ -1,6 +1,6 @@
 <h1>Liste des comptes</h1>
 
-<%= link_to 'New User', new_admin_user_path, class: "btn pull-right" %>
+<%= link_to 'Nouveau utilisateur', new_admin_user_path, class: "btn pull-right" %>
 <br>
 <table class="table table-hover">
     <thead>
@@ -8,7 +8,6 @@
         <th>Login</th>
         <th>Email</th>
         <th>Statut</th>
-        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -54,17 +53,6 @@
             <td>
                 <i class="icon-eye-close"></i>
                 <%= link_to("Activer compte", activate_admin_user_path(user), method: :post) %>
-            </td>
-        <% end %>
-        <% if user.status == User::RECRUTEUR %>
-            <td>
-                <i class="icon-eye-open"></i>
-                <%= link_to("Nommer administrateur", set_admin_admin_user_path(user), method: :post) %>
-            </td>
-        <% else %>
-            <td>
-                <i class="icon-eye-close"></i>
-                <%= link_to("Nommer recruteur", set_recruteur_admin_user_path(user), method: :post) %>
             </td>
         <% end %>
         </tr>

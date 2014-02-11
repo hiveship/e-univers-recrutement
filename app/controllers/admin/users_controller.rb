@@ -95,7 +95,7 @@ class Admin::UsersController < Admin::AdminController
   def set_admin
     @user = User.find params[:id]
     if  @user.id != @me.id
-      if @user.status == User::RECRUTEUR
+      if @user.status == User::RECRUTEUR || @user.status == User::MANAGER
         @user.update_columns :status => User::ADMIN
         UserMailer.set_admin(@user).deliver
         flash[:success] = "Le compte a bien été nommé administrateur !"
@@ -111,10 +111,26 @@ class Admin::UsersController < Admin::AdminController
   def set_recruteur
     @user = User.find params[:id]
     if  @user.id != @me.id
-      if @user.status == User::ADMIN
+      if @user.status == User::ADMIN || @user.status == User::MANAGER
         @user.update_columns :status => User::RECRUTEUR
         UserMailer.set_recruteur(@user).deliver
         flash[:success] = "Le compte a bien été nommé recruteur !"
+      else
+        flash[:error] = "Erreur, il s'agit déjà d'un recruteur !"
+      end
+    else
+      flash[:error] = "Erreur, vous ne pouvez pas changer le statut de votre propre compte !"
+    end
+    redirect_to :admin_users
+  end
+
+  def set_manager
+    @user = User.find params[:id]
+    if  @user.id != @me.id
+      if @user.status == User::ADMIN || @user.status == User::RECRUTEUR
+        @user.update_columns :status => User::MANAGER
+        #UserMailer.set_manager(@user).deliver
+        flash[:success] = "Le compte a bien été nommé manager !"
       else
         flash[:error] = "Erreur, il s'agit déjà d'un recruteur !"
       end

@@ -21,6 +21,41 @@
         <%= f.label :mail %><br>
         <%= f.text_field :mail %>
     </div>
+
+    <% if @user.status == User::RECRUTEUR %>
+        <td>
+            <i class="icon-eye-open"></i>
+            <%= link_to("Nommer Administrateur", set_admin_admin_user_path(@user), method: :post) %>
+        </td>
+
+        <td>
+            <i class="icon-eye-open"></i>
+            <%= link_to("Nommer Manager", set_manager_admin_user_path(@user), method: :post) %>
+        </td>
+
+    <% elsif @user.status == User::MANAGER %>
+        <td>
+            <i class="icon-eye-close"></i>
+            <%= link_to("Nommer recruteur", set_recruteur_admin_user_path(@user), method: :post) %>
+        </td>
+
+        <td>
+            <i class="icon-eye-close"></i>
+            <%= link_to("Nommer Administrateur", set_admin_admin_user_path(@user), method: :post) %>
+        </td>
+    <% else %>
+        <td>
+            <i class="icon-eye-close"></i>
+            <%= link_to("Nommer recruteur", set_recruteur_admin_user_path(@user), method: :post) %>
+        </td>
+
+        <td>
+            <i class="icon-eye-open"></i>
+            <%= link_to("Nommer Manager", set_manager_admin_user_path(@user), method: :post) %>
+        </td>
+
+    <% end %>
+
     <div class="actions">
         <%= f.submit %>
     </div>

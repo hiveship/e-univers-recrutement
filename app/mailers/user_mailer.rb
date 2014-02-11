@@ -23,6 +23,11 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.mail, subject: 'Compte sur la plate-forme de recrutement de E-Univers promu recruteur')
   end
 
+  def set_manager(user)
+    @user = user
+    mail(to: @user.mail, subject: 'Compte sur la plate-forme de recrutement de E-Univers promu recruteur')
+  end
+
   def activate(user)
     @user = user
     mail(to: @user.mail, subject: 'Compte sur la plate-forme de recrutement de E-Univers activé')
