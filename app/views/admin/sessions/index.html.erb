@@ -1,22 +1,27 @@
 
-<h2>Liste des sessions de recrutement</h2>
+<br>
+<h2><center>Liste des sessions de recrutement</center></h2>
+<br>
 
 <%= link_to 'Nouvelle session', new_admin_session_path, class: "btn pull-right" %>
 <br>
 <br>
+
 <table class="table table-hover">
+    <thead>
+	    <tr>
+	        <th>Poste concerné</th>
+	        <th>Titre de la session</th>
+	        <th>Date de début</th>
+	        <th>Date de clotûre</th>
+	        <th></th>
+	        <th></th>
+	        <th></th>
+	        <th></th>
+	        <th></th>
+	    </tr>
+    </thead>
     <tbody>
-    <tr>
-        <th>Poste concerné</th>
-        <th>Titre de la session</th>
-        <th>Date de début</th>
-        <th>Date de clotûre</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
         <% @sessions.each do |session| %>
             <% if session.get_status == :pending %>
             <tr class="info">
@@ -43,22 +48,22 @@
         <td><i class="icon-pencil"></i><%= link_to 'Voir détails', admin_session_path(session), method: :get %></td>
         <td><i class="icon-pencil"></i><%= link_to 'Modifier', edit_admin_session_url(session), method: :get %></td>
         <td>
-            <i class="icon-remove-sign"></i> <%= link_to 'Supprimer', admin_session_path(session), method: :delete, data: {confirm: 'Confirmer la suppression ?'} %>
+          <i class="icon-remove-sign"></i> <%= link_to 'Supprimer', admin_session_path(session), method: :delete, data: {confirm: 'Confirmer la suppression ?'} %>
         </td>
         <% if session.state == Session::ACTIVATE %>
-            <td>
-                <i class="icon-eye-open"></i>
-                <%= link_to("Suspendre", deactivate_admin_session_path(session), method: :post) %></td>
-            </td>
-        <% else %>
-            <td>
-                <i class="icon-eye-close"></i>
-                <%= link_to("Relancer", activate_admin_session_path(session), method: :post) %>
-            </td>
-        <% end %>
-    </tr>
-    <% end %>
+        <td>
+          <i class="icon-eye-open"></i>
+          <%= link_to("Suspendre", deactivate_admin_session_path(session), method: :post) %></td>
+</td>
+<% else %>
+<td>
+  <i class="icon-eye-close"></i>
+  <%= link_to("Relancer", activate_admin_session_path(session), method: :post) %>
+</td>
+<% end %>
+</tr>
+<% end %>
 
-    </tbody>
+</tbody>
 
 </table>
