@@ -1,15 +1,15 @@
-<h1>Liste des comptes</h1>
-
-<%= link_to 'Nouveau utilisateur', new_admin_user_path, class: "btn pull-right" %>
 <br>
-<table class="table table-hover">
+<h2><center>Liste des comptes</center></h2>
+<br>
+<%= link_to 'Nouveau utilisateur', new_admin_user_path, class: "btn pull-right" %>
+
+<br><br><br>
+<table class="table-striped table-bordered span12">
     <thead>
     <tr>
         <th>Login</th>
         <th>Email</th>
         <th>Statut</th>
-        <th></th>
-        <th></th>
         <th></th>
     </tr>
     </thead>
@@ -17,42 +17,67 @@
     <tbody>
 
     <% @users.each do |user| %>
-
         <% if @me == user %>
             <tr class="info">
         <% end %>
-        <td><%= user.login %></td>
+        <td><h6><%= user.login %></h6></td>
         <td><%= user.mail %></td>
 
         <% if user.status == User::ADMIN %>
             <td>
-                Administrateur
+                <center>
+                <span class="label label-important">
+
+                        Administrateur
+
+                </span>
+                </center>
             </td>
         <% elsif user.status == User::RECRUTEUR%>
             <td>
-                Recruteur
+                <center>
+                <span class="label label-success">
+
+                        Recruteur
+
+                </span>
+                </center>
             </td>
         <% else %>
             <td>
-                Manager
+                <center>
+                <span class="label label-info">
+
+                    Manager
+
+                </span>
+                </center>
             </td>
         <% end %>
 
-        <td><i class="icon-pencil"></i><%= link_to 'Modifier', edit_admin_user_path(user), method: :get %></td>
         <td>
-            <i class="icon-remove-sign"></i> <%= link_to 'Suppr', admin_user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %>
+            <center>
+            <%= link_to ' Modifier', edit_admin_user_path(user),class:"icon-pencil", method: :get %></td>
+            </center>
+        <td>
+            <center>
+                <%= link_to ' Suppr', admin_user_path(user),class:"icon-remove-sign", method: :delete, data: {confirm: 'Are you sure?'} %>
+            </center>
         </td>
-        <td><i class="icon-repeat"></i> <%= link_to("Reset password", reset_password_admin_user_path(user), method: :post) %>
+        <td>
+            <center>
+                <%= link_to ' Reset password', reset_password_admin_user_path(user),class:"icon-repeat", method: :post %>
+            </center>
         </td>
         <% if user.state == User::ACTIVATE %>
             <td>
                 <i class="icon-eye-open"></i>
-                <%= link_to("Desactiver compte", deactivate_admin_user_path(user), method: :post) %>
+                <%= link_to ' Desactiver compte', deactivate_admin_user_path(user), method: :post %>
             </td>
         <% else %>
             <td>
                 <i class="icon-eye-close"></i>
-                <%= link_to("Activer compte", activate_admin_user_path(user), method: :post) %>
+                <%= link_to ' Activer compte', activate_admin_user_path(user), method: :post %>
             </td>
         <% end %>
         </tr>

@@ -64,8 +64,11 @@
 
 
     <div class="actions">
-        <%= f.submit "Appliquer les changements",class: 'btn btn-default' %>
-        <%= link_to "Annuler" , admin_users_path,class: 'btn btn-default'  %>
+
+        <%= f.submit "Appliquer les changements" %>
+        <%= button_to "Annuler" , admin_users_path  %>
+
     </div>
+
 
 <% end %>
