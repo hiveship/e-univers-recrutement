@@ -1,7 +1,6 @@
 class Admin::SessionsController < Admin::AdminController
-
   def index
-    @sessions = Session.all
+    @sessions= Session.all
   end
 
   def show

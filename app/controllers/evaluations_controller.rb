@@ -62,13 +62,13 @@ class EvaluationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_evaluation
-      @evaluation = Evaluation.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_evaluation
+    @evaluation = Evaluation.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def evaluation_params
-      params.require(:evaluation).permit(:mark, :commentary, :id_candidature, :id_user)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def evaluation_params
+    params.require(:evaluation).permit(:mark, :commentary, :id_candidature, :id_user)
+  end
 end

@@ -1,6 +1,7 @@
-<br>
-<h2><center>Liste des comptes</center></h2>
-<br>
+
+<div class="page-header">
+    <h2><center>Liste des comptes</center></h2>
+</div>
 <%= link_to 'Nouveau utilisateur', new_admin_user_path, class: "btn pull-right" %>
 
 <br><br><br>
@@ -17,69 +18,68 @@
     <tbody>
 
     <% @users.each do |user| %>
-        <% if @me == user %>
-            <tr class="info">
-        <% end %>
-        <td><h6><%= user.login %></h6></td>
-        <td><%= user.mail %></td>
-
-        <% if user.status == User::ADMIN %>
-            <td>
-                <center>
+        <tr>
+            <td><h6><%= user.login %></h6></td>
+            <td><%= user.mail %></td>
+            <% if user.status == User::ADMIN %>
+                <td>
+                    <center>
                 <span class="label label-important">
 
                         Administrateur
 
                 </span>
-                </center>
-            </td>
-        <% elsif user.status == User::RECRUTEUR%>
-            <td>
-                <center>
+                    </center>
+                </td>
+            <% elsif user.status == User::RECRUTEUR%>
+                <td>
+                    <center>
                 <span class="label label-success">
 
                         Recruteur
 
                 </span>
-                </center>
-            </td>
-        <% else %>
-            <td>
-                <center>
+                    </center>
+                </td>
+            <% else %>
+                <td>
+                    <center>
                 <span class="label label-info">
 
                     Manager
 
                 </span>
+                    </center>
+                </td>
+            <% end %>
+
+            <td>
+                <center>
+                    <%= link_to ' Modifier', edit_admin_user_path(user),class:"icon-pencil", method: :get %>
                 </center>
             </td>
-        <% end %>
+            <td>
+                <center>
+                    <%= link_to ' Suppr', admin_user_path(user),class:"icon-remove-sign", method: :delete, data: {confirm: 'Are you sure?'} %>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <%= link_to ' Reset password', reset_password_admin_user_path(user),class:"icon-repeat", method: :post %>
+                </center>
+            </td>
+            <% if user.state == User::ACTIVATE %>
+                <td>
 
-        <td>
-            <center>
-            <%= link_to ' Modifier', edit_admin_user_path(user),class:"icon-pencil", method: :get %></td>
-            </center>
-        <td>
-            <center>
-                <%= link_to ' Suppr', admin_user_path(user),class:"icon-remove-sign", method: :delete, data: {confirm: 'Are you sure?'} %>
-            </center>
-        </td>
-        <td>
-            <center>
-                <%= link_to ' Reset password', reset_password_admin_user_path(user),class:"icon-repeat", method: :post %>
-            </center>
-        </td>
-        <% if user.state == User::ACTIVATE %>
-            <td>
-                <i class="icon-eye-open"></i>
-                <%= link_to ' Desactiver compte', deactivate_admin_user_path(user), method: :post %>
-            </td>
-        <% else %>
-            <td>
-                <i class="icon-eye-close"></i>
-                <%= link_to ' Activer compte', activate_admin_user_path(user), method: :post %>
-            </td>
-        <% end %>
+                    <%= link_to ' Desactiver compte', deactivate_admin_user_path(user),class:"icon-eye-open", method: :post %>
+                </td>
+            <% else %>
+                <td>
+
+
+                    <%= link_to ' Activer compte', activate_admin_user_path(user),class:"icon-eye-close", method: :post %>
+                </td>
+            <% end %>
         </tr>
     <% end %>
 

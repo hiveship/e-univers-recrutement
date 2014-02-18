@@ -1,28 +1,34 @@
-<h1>Listing profils</h1>
+<div class="page-header">
+    <h2> <center>Liste des profils de poste</center></h2>
 
-<table>
-  <thead>
+</div>
+<%= link_to 'Nouveau profil de poste', new_admin_profil_path , class: "btn pull-right" %>
+<br><br><br>
+<table class="table-striped table-bordered span12">
+    <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
+        <th>Title</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @profils.each do |profil| %>
-      <tr>
-        <td><%= profil.title %></td>
-        <td><%= profil.description %></td>
-        <td><%= link_to 'Modifier', edit_admin_profil_path(profil), method: :get %></td>
-        <td><%= link_to 'Destroy', admin_profil_path(profil), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+            <td><%= profil.title %></td>
+            <td><%= profil.description %></td>
+            <td><i class="icon-pencil"> </i><%= link_to 'Modifier', edit_admin_profil_path(profil), method: :get %></td>
+            <td>
+            <center>
+                <%= link_to ' Suppr', admin_profil_path(profil),class:"icon-remove-sign", method: :delete, data: {confirm: 'Are you sure?'} %>
+            </center>
+            </td>
+        </tr>
     <% end %>
-  </tbody>
+    </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Nouveau profil de poste', new_admin_profil_path %>

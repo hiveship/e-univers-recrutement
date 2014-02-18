@@ -8,29 +8,53 @@ Recrutement::Application.routes.draw do
         post :deactivate
         post :set_recruteur
         post :set_admin
-        post :set_manager
       end
     end
 
     resources :sessions do
       member do
+        # Ajoue Thomas =====
+        resources :candidatures, only: [:new, :create]
+        # ==================
         post :activate
         post :deactivate
       end
     end
+
+    # Ajoue Thomas =====
+    resources :candidatures, only: [:update, :destroy]
+    # ==================
 
     resources :profils
   end
 
+
+
+
   namespace :recruteur do
+
+    # Ajoue Thomas =====
     resources :sessions do
       member do
-        post :activate
-        post :deactivate
+        resources :candidatures, only: [:index]
       end
     end
-    resources :candidatures
-    resources :evaluations
+
+    resources :candidatures, only: [:show] do
+      member do
+        patch :set_result
+      end
+    end
+
+    resources :candidatures, only: [] do
+      member do
+        resources :evaluations, only: [:index, :new, :create]
+      end
+    end
+
+    resources :evaluations, except: [:index, :new, :create]
+    # ==================
+
     resources :users
   end
 
@@ -41,15 +65,17 @@ Recrutement::Application.routes.draw do
 
   resources :profils
 
-  resources :evaluations
-
   resources :user, only: [:update, :edit]
 
-  resources :sessions
-
-  resources :candidatures do
-    resources :evaluations
+  # Ajoue Thomas =====
+  resources :sessions do
+    member do
+      resources :candidatures, only: [:new, :create]
+    end
   end
+
+  resources :candidatures, only: [:destroy]
+  # ==================
 
   root to: 'sessions#index'
 
