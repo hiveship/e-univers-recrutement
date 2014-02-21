@@ -27,6 +27,8 @@ Recrutement::Application.routes.draw do
     # ==================
 
     resources :profils
+
+    resources :evaluations
   end
 
 
