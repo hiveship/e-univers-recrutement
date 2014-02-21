@@ -6,15 +6,17 @@
 <div class="row">
     <% @sessions.each do |session| %>
         <div class="span6">
-            <h3><%= session.title %></h3>
-            <p>Date de cloture des candidatures : <%= session.endDate %></p>
-            <p> <%= session.description[0,250] %>... </p>
+            <div class="hero-unit">
 
-            <%= link_to ("Plus d'infos"), session_path(session), :class=>'btn btn-inverse' %>
-            <%= link_to t('.new', :default => t("helpers.links.Postuler")),
-                        new_candidature_path(session),
-                        :class => 'btn btn-primary' %>
+                <h3><%= session.title %></h3>
+                <p>Date de cloture des candidatures : <%= session.endDate %></p>
+                <p> <%= session.description[0,250] %>... </p>
 
+                <%= link_to ("Plus d'infos"), session_path(session), :class=>'btn btn-inverse' %>
+                <%= link_to t('.new', :default => t("helpers.links.Postuler")),
+                            new_candidature_path(session),
+                            :class => 'btn btn-primary' %>
+            </div>
         </div>
     <% end %>
 </div>

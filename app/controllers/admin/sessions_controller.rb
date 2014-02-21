@@ -19,7 +19,7 @@ class Admin::SessionsController < Admin::AdminController
     respond_to do |format|
       if @session.save
         flash[:success] = "La session a bien été créée !"
-        format.html { redirect_to admin_sessions_path}
+        format.html { redirect_to recruteur_sessions_path}
         format.json { head :no_content }
       else
         format.html { render action: 'new' }
@@ -33,7 +33,7 @@ class Admin::SessionsController < Admin::AdminController
     respond_to do |format|
       if @session.update params.require(:session).permit(:title, :description, :beginDate, :endDate)
         flash[:success] = "La session a bien été modifiée !"
-        format.html { redirect_to admin_sessions_path }
+        format.html { redirect_to recruteur_sessions_path }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -46,7 +46,7 @@ class Admin::SessionsController < Admin::AdminController
     Session.find(params[:id]).destroy!
     flash[:success]=" La session a bien été supprimée !"
     respond_to do |format|
-      format.html { redirect_to admin_sessions_path }
+      format.html { redirect_to recruteur_sessions_path }
       format.json { head :no_content }
     end
 

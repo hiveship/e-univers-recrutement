@@ -24,11 +24,25 @@ class CandidaturesController < ApplicationController
   # POST /candidatures
   # POST /candidatures.json
   def create
+
+    set_session # Permet de connaître la session actuelle
     @candidature = Candidature.new(candidature_params)
+
+    # Vérification de la date de naissance
+    if @candidature.valid_born_date
+      flash[:error] = "Erreur, la date de naissance doit être inférieur à la date d'aujourd'hui"
+      redirect_to new_admin_candidatures_path
+    end
+
+    # Le résultat de la candidature est indéfini à sa création
+    @candidature.result = Candidature::INDEFINI
+    @candidature.submitDate = Date.today
+    @candidature.session_id = @session.id
 
     respond_to do |format|
       if @candidature.save
-        format.html { redirect_to @candidature, notice: 'Candidature was successfully created.' }
+        flash[:info] = "Candidature enregistrée"
+        format.html { redirect_to root_path, notice: 'La candidature a bien été créée.' }
         format.json { render action: 'show', status: :created, location: @candidature }
       else
         format.html { render action: 'new' }
@@ -71,4 +85,9 @@ class CandidaturesController < ApplicationController
   def candidature_params
     params.require(:candidature).permit(:pseudo, :mail, :motivation, :submitDate, :bornDate, :result, :id_session)
   end
+
+  def set_session
+    @session = Session.find_by(params[:id])
+  end
+
 end
