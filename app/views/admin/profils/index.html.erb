@@ -1,13 +1,12 @@
 <div class="page-header">
     <h2> <center>Liste des profils de poste</center></h2>
-
 </div>
 <%= link_to 'Nouveau profil de poste', new_admin_profil_path , class: "btn pull-right" %>
 <br><br><br>
 <table class="table-striped table-bordered span12">
     <thead>
     <tr>
-        <th>Title</th>
+        <th>Titre du profil de poste</th>
         <th>Description</th>
         <th></th>
         <th></th>
@@ -17,13 +16,13 @@
     <tbody>
     <% @profils.each do |profil| %>
         <tr>
-            <td><%= profil.title %></td>
-            <td><%= profil.description %></td>
+            <td><h6><center><%= profil.title %></center></h6></td>
+            <td><%= profil.description[0,70] %></td>
             <td><i class="icon-pencil"> </i><%= link_to 'Modifier', edit_admin_profil_path(profil), method: :get %></td>
             <td>
-            <center>
-                <%= link_to ' Suppr', admin_profil_path(profil),class:"icon-remove-sign", method: :delete, data: {confirm: 'Are you sure?'} %>
-            </center>
+                <center>
+                    <%= link_to ' Suppr', admin_profil_path(profil),class:"icon-remove-sign", method: :delete, data: {confirm: 'Etes vous sur?'} %>
+                </center>
             </td>
         </tr>
     <% end %>

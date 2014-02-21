@@ -1,9 +1,10 @@
 
-<br>
-<h2><center>Liste des sessions de recrutement</center></h2>
-<br>
+<div class="page-header">
+    <h2><center>Liste des sessions de recrutement</center></h2>
+</div>
 
 <%= link_to 'Nouvelle session', new_admin_session_path, class: "btn pull-right" %>
+<br>
 <br>
 <br>
 
@@ -18,14 +19,13 @@
         <th></th>
         <th></th>
         <th></th>
-        <th></th>
     </tr>
     </thead>
     <tbody>
     <% @sessions.each do |session| %>
 
         <tr>
-            <td><%= session.profil.title %></td>
+            <td><h6><%= session.profil.title %></h6></td>
             <td><%= session.title %></td>
             <td><%= session.beginDate.strftime('%d/%m/%Y') %></td>
             <td><%= session.endDate.strftime('%d/%m/%Y') %></td>
@@ -48,8 +48,7 @@
                 </span>
                 </td>
             <% end %>
-            <td><i class="icon-tasks"> </i><%= link_to 'Voir détails', recruteur_candidatures_path(session), method: :get %></td>
-            <td><i class="icon-pencil"> </i><%= link_to 'Modifier', edit_admin_session_url(session), method: :get %></td>
+            <td><i class="icon-tasks"> </i><%= link_to 'Voir candidatures', recruteur_candidatures_path(session), method: :get %></td>
             <td>
                 <i class="icon-remove-sign"></i> <%= link_to 'Supprimer', admin_session_path(session), method: :delete, data: {confirm: 'Confirmer la suppression ?'} %>
             </td>

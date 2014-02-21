@@ -1,4 +1,7 @@
-<h1>Nouveau profil de poste</h1>
+<div class="page-header">
+    <h2> <center>Nouveau profil de poste</center></h2>
+
+</div>
 
 <%= form_for [:admin, @profil] do |f| %>
     <% if @profil.errors.any? %>
@@ -14,17 +17,14 @@
     <% end %>
 
     <div class="field">
-        <%= f.label :title %><br>
+        <%= f.label :title ,"Titre du profil"%><br>
         <%= f.text_field :title %>
     </div>
     <div class="field">
-        <%= f.label :description %><br>
+        <%= f.label :description ,"Description" %><br>
         <%= f.text_area :description %>
     </div>
     <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Creer le profil" %>
     </div>
 <% end %>
-
-
-<%= link_to 'Liste des profils de postes', admin_profils_path %>

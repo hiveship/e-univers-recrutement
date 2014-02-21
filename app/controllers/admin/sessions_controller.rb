@@ -61,7 +61,7 @@ class Admin::SessionsController < Admin::AdminController
     else
       flash[:error] = "La session est déjà actif !"
     end
-    redirect_to admin_sessions_path
+    redirect_to recruteur_sessions_path
   end
 
   def deactivate
@@ -72,6 +72,6 @@ class Admin::SessionsController < Admin::AdminController
     else
       flash[:error] = "La session est déjà bloquée !"
     end
-    redirect_to admin_sessions_path
+    redirect_to recruteur_sessions_path
   end
 end

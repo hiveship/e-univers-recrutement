@@ -8,6 +8,7 @@ Recrutement::Application.routes.draw do
         post :deactivate
         post :set_recruteur
         post :set_admin
+        post :set_manager
       end
     end
 

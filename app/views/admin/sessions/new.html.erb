@@ -1,5 +1,6 @@
-<h1>New session</h1>
-
+<div class="page-header">
+    <h2> <center>Nouvelle session</center></h2>
+</div>
 <%= form_for [:admin, @session] do |f| %>
     <% if @session.errors.any? %>
         <div id="error_explanation">
@@ -14,29 +15,25 @@
     <% end %>
 
     <div class="field">
-        <%= f.label :profil_id %>
+        <%= f.label :profil_id , "Profil de poste" %>
         <%= select("session", "profil_id", Profil.all.collect { |profil| [profil.title, profil.id] })%>
         <%= link_to 'Créer un nouveau profil', new_admin_profil_path, class: "btn pull" %>
     </div>
 
     <div class="field">
-        <%= f.label :title %><br>
+        <%= f.label :title , "Titre de la session" %><br>
         <%= f.text_field :title %>
     </div>
     <div class="field">
-        <%= f.label :beginDate %><br>
+        <%= f.label :beginDate ,"Date début" %><br>
         <%= f.date_select :beginDate %>
     </div>
     <div class="field">
-        <%= f.label :endDate %><br>
+        <%= f.label :endDate , "Date fin" %><br>
         <%= f.date_select :endDate %>
     </div>
     <div class="field">
-        <%= f.label :state %><br>
-        <%= f.text_field :state %>
-    </div>
-    <div class="field">
-        <%= f.label :description %><br>
+        <%= f.label :description , "Description de la session" %><br>
         <%= f.text_area(:description) %>
     </div>
 
@@ -44,9 +41,7 @@
 
     </div>
     <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Creer la session "%>
     </div>
 <% end %>
 
-
-<%= link_to 'Liste des sessions', admin_sessions_path %>
