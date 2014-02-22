@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
     <strong>Titre de la session:</strong>
     <%= @session.title %>
@@ -28,5 +26,4 @@
     <%= @session.description %>
 </p>
 
-<%= link_to 'Postuler', new_candidature_path(@session) %>
-<%= link_to 'Liste des sessions en cours', sessions_path %>
+<%= link_to 'Postuler', new_candidature_path(@session) , class: "btn" %>

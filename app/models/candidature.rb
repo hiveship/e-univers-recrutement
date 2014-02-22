@@ -15,7 +15,7 @@ class Candidature < ActiveRecord::Base
   REFUSER = "decline"
   ENTRETIEN = "interview"
 
-  belongs_to :sessions
+  belongs_to :session
   has_many :evaluation
 
   validates_presence_of :pseudo
@@ -25,7 +25,7 @@ class Candidature < ActiveRecord::Base
   validates_presence_of :submitDate
   validates_presence_of :bornDate
   validates_presence_of :result
-  validates_uniqueness_of :mail, :pseudo
+  #validates_uniqueness_of :mail, :pseudo ,:session_id
   validate :valid_born_date
 
 

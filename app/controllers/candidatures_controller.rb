@@ -40,14 +40,13 @@ class CandidaturesController < ApplicationController
     @candidature.result = Candidature::INDEFINI
     @candidature.submitDate = Date.today
     @candidature.session_id = @session.id
-
     respond_to do |format|
-      if @candidature.save
+      if @candidature.save && !@candidature.valid_born_date
         flash[:info] = "Candidature enregistrée"
         format.html { redirect_to root_path, notice: 'La candidature a bien été créée.' }
         format.json { render action: 'show', status: :created, location: @candidature }
       else
-        flash[:error] = @candidature.errors
+
         format.html { redirect_to root_path}
         format.json { render json: @candidature.errors, status: :unprocessable_entity }
       end
