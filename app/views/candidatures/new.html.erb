@@ -1,3 +1,8 @@
+<div class="page-header">
+    <h2><center>Candidature pour la session de recrutement : </center></h2>
+    <h3><center><%= Session.find_by(id: params[:id]).title %> </center></h3>
+</div>
+
 <%= form_for(@candidature) do |f| %>
     <% if @candidature.errors.any? %>
         <div id="error_explanation">
@@ -24,16 +29,8 @@
         <%= f.text_field :motivation %>
     </div>
     <div class="field">
-        <%= f.label :submitDate %><br>
-        <%= f.date_select :submitDate %>
-    </div>
-    <div class="field">
         <%= f.label :bornDate %><br>
         <%= f.date_select :bornDate %>
-    </div>
-    <div class="field">
-        <%= f.label :result %><br>
-        <%= f.text_field :result %>
     </div>
     <div class="actions">
         <%= f.submit %>

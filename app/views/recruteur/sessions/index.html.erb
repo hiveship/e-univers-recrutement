@@ -25,7 +25,7 @@
     <% @sessions.each do |session| %>
 
         <tr>
-            <td><h6><%= session.profil.title %></h6></td>
+            <td><h6><%=  session.profil.title %></h6></td>
             <td><%= session.title %></td>
             <td><%= session.beginDate.strftime('%d/%m/%Y') %></td>
             <td><%= session.endDate.strftime('%d/%m/%Y') %></td>
