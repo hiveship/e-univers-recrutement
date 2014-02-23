@@ -15,7 +15,7 @@ class Candidature < ActiveRecord::Base
   REFUSER = "decline"
   ENTRETIEN = "interview"
 
-  belongs_to :session
+  belongs_to :sessions
   has_many :evaluation
 
   validates_presence_of :pseudo
@@ -25,7 +25,7 @@ class Candidature < ActiveRecord::Base
   validates_presence_of :submitDate
   validates_presence_of :bornDate
   validates_presence_of :result
-  #validates_uniqueness_of :mail, :pseudo ,:session_id
+  validate :is_unique
   validate :valid_born_date
 
 
@@ -38,12 +38,21 @@ class Candidature < ActiveRecord::Base
     end
   end
 
+
   def is_close
     if self.result == Candidature::REFUSER or self.result == Candidature::ACCEPTER
       return true
     else
       return false
     end
+  end
 
+  # Pour une session, on ne peut utiliser un mail ou un pseudo déjà utilisé
+  def is_unique
+    if Candidature.exists?(session_id: self.session_id, pseudo: self.pseudo) or Candidature.exists?(session_id: self.session_id, mail: self.mail)
+      return false
+    else
+      return true
+    end
   end
 end

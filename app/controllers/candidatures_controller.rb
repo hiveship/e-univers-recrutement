@@ -30,25 +30,29 @@ class CandidaturesController < ApplicationController
 
     @candidature = Candidature.new(candidature_params)
 
-    # Vérification de la date de naissance
-    if @candidature.valid_born_date
-      flash[:error] = "Erreur, la date de naissance doit être inférieur à la date d'aujourd'hui"
-    end
-
     # Le résultat de la candidature est indéfini à sa création
 
     @candidature.result = Candidature::INDEFINI
     @candidature.submitDate = Date.today
     @candidature.session_id = @session.id
-    respond_to do |format|
-      if @candidature.save && !@candidature.valid_born_date
-        flash[:info] = "Candidature enregistrée"
-        format.html { redirect_to root_path, notice: 'La candidature a bien été créée.' }
-        format.json { render action: 'show', status: :created, location: @candidature }
-      else
 
-        format.html { redirect_to root_path}
-        format.json { render json: @candidature.errors, status: :unprocessable_entity }
+    # Vérification de la date de naissance et que le mail ou le pseudo n'est pas déjà pris
+    if @candidature.valid_born_date
+      flash[:error] = "Erreur, la date de naissance doit être inférieur à la date d'aujourd'hui"
+      redirect_to new_candidature_path(@session.id)
+    elsif @candidature.is_unique == false
+      flash[:error] = "Erreur, votre pseudo ou votre mail est déjà utilisé dans cette session"
+      redirect_to new_candidature_path(@session.id)
+    else
+      respond_to do |format|
+        if @candidature.save
+          flash[:info] = "Candidature enregistrée"
+          format.html { redirect_to root_path, notice: 'La candidature a bien été créée.' }
+          format.json { render action: 'show', status: :created, location: @candidature }
+        else
+          format.html { redirect_to root_path}
+          format.json { render json: @candidature.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
