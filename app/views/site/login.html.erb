@@ -1,8 +1,20 @@
-<h1>Espace réservé. Veuillez vous identifier</h1>
-<br/>
+<div class="page-header">
+    <center><h2> Espace réservé, veillez vous identifier </h2></center>
+</div>
 
-<%= form_tag login_path do %>
-    Login : <%= text_field :login, :login %><br/>
-    Mot de passe : <%= password_field :pass, :pass %><br/>
-    <%= submit_tag 'Valider'%>
-<%end%>
+
+
+<div class="container">
+    <div class="row">
+
+        <%= form_tag login_path, class: %(login-form well span4 offset4) do %>
+            <%= field_set_tag(t 'Connexion') {} %>
+            <i class="icon-white icon-user">  </i> <%= text_field :login, :login ,required:true%><br/>
+            <i class="icon-white icon-question-sign">  </i><%= password_field :pass , :pass,required:true %><br/>
+            <%= submit_tag 'Valider' , class: %(btn btn-primary pull-right)%>
+
+        <% end %>
+
+    </div>
+</div>
+

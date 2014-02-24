@@ -46,7 +46,7 @@ class CandidaturesController < ApplicationController
     else
       respond_to do |format|
         if @candidature.save
-          flash[:info] = "Candidature enregistrée"
+          flash[:success] = "Candidature enregistrée"
           format.html { redirect_to root_path, notice: 'La candidature a bien été créée.' }
           format.json { render action: 'show', status: :created, location: @candidature }
         else

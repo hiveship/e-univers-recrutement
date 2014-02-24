@@ -9,7 +9,7 @@
             <div class="hero-unit">
 
                 <h3><%= session.title %></h3>
-                <p>Date de cloture des candidatures : <%= session.endDate %></p>
+                <p>Date de cloture des candidatures : <%= session.endDate.strftime('%d/%m/%Y') %></p>
                 <p> <%= session.description[0,250] %>... </p>
 
                 <%= link_to ("Plus d'infos"), session_path(session), :class=>'btn btn-inverse' %>
