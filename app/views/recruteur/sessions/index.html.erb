@@ -3,7 +3,9 @@
     <h2><center>Liste des sessions de recrutement</center></h2>
 </div>
 
-<%= link_to 'Nouvelle session', new_admin_session_path, class: "btn pull-right" %>
+<% if @me.status == User::ADMIN %>
+    <%= link_to 'Nouvelle session', new_admin_session_path, class: "btn pull-right" %>
+<% end %>
 <br>
 <br>
 <br>
@@ -17,8 +19,10 @@
         <th>Date de clotûre</th>
         <th>Statut</th>
         <th></th>
+        <% if @me.status == User::ADMIN %>
         <th></th>
         <th></th>
+        <% end %>
     </tr>
     </thead>
     <tbody>
@@ -49,19 +53,22 @@
                 </td>
             <% end %>
             <td><i class="icon-tasks"> </i><%= link_to 'Voir candidatures', recruteur_candidatures_path(session), method: :get %></td>
+            <% if @me.status == User::ADMIN %>
             <td>
                 <i class="icon-remove-sign"></i> <%= link_to 'Supprimer', admin_session_path(session), method: :delete, data: {confirm: 'Confirmer la suppression ?'} %>
             </td>
-            <% if session.state == Session::ACTIVATE %>
-                <td>
-                    <i class="icon-eye-open"></i>
-                    <%= link_to("Suspendre", deactivate_admin_session_path(session), method: :post) %></td>
-                </td>
-            <% else %>
-                <td>
-                    <i class="icon-eye-close"></i>
-                    <%= link_to("Relancer", activate_admin_session_path(session), method: :post) %>
-                </td>
+
+                <% if session.state == Session::ACTIVATE %>
+                    <td>
+                        <i class="icon-eye-open"></i>
+                        <%= link_to("Suspendre", deactivate_admin_session_path(session), method: :post) %></td>
+                    </td>
+                <% else %>
+                    <td>
+                        <i class="icon-eye-close"></i>
+                        <%= link_to("Relancer", activate_admin_session_path(session), method: :post) %>
+                    </td>
+                <% end %>
             <% end %>
         </tr>
     <% end %>
