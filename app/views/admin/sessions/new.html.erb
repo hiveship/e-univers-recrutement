@@ -26,11 +26,11 @@
     </div>
     <div class="field">
         <%= f.label :beginDate ,"Date début" %><br>
-        <%= f.date_select :beginDate %>
+        <%= f.date_select :beginDate , :order => [:day, :month, :year]%>
     </div>
     <div class="field">
         <%= f.label :endDate , "Date fin" %><br>
-        <%= f.date_select :endDate %>
+        <%= f.date_select :endDate , :order => [:day, :month, :year]%>
     </div>
     <div class="field">
         <%= f.label :description , "Description de la session" %><br>

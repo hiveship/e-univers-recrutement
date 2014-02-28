@@ -30,7 +30,7 @@
     </div>
     <div class="field">
         <%= f.label :bornDate , "Date de naissance" %><br>
-        <%= f.date_select :bornDate %>
+        <%= f.date_select :bornDate, :order => [:day, :month, :year], :start_year => 1900 %>
     </div>
     <div class="actions">
         <%= f.submit "Candidater" %>
