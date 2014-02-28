@@ -1,6 +1,9 @@
-<h1>Editing profil</h1>
+<div class="page-header">
+    <h2> <center>Modifier mon profil de poste</center></h2>
 
-<%= form_for(@profil, url: admin_profil_path(@profil), method: "patch") do |f| %>
+</div>
+
+<%= form_for [:admin, @profil] do |f| %>
     <% if @profil.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(@profil.errors.count, "error") %> prohibited this profil from being saved:</h2>
@@ -19,10 +22,9 @@
     </div>
     <div class="field">
         <%= f.label :description ,"Description" %><br>
-        <%= f.text_area :description %>
+        <%= f.text_area :description , :size => "5x5" , :class => "span8"%>
     </div>
     <div class="actions">
         <%= f.submit "Valider" %>
     </div>
 <% end %>
-

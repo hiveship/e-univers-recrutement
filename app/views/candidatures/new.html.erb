@@ -29,10 +29,10 @@
         <%= f.text_area :motivation , :size => "5x7" , :class => "span8"%>
     </div>
     <div class="field">
-        <%= f.label :bornDate %><br>
+        <%= f.label :bornDate , "Date de naissance" %><br>
         <%= f.date_select :bornDate %>
     </div>
     <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Candidater" %>
     </div>
 <% end %>
