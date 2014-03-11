@@ -7,6 +7,7 @@ class CreateCandidatures < ActiveRecord::Migration
       t.date :submitDate
       t.date :bornDate
       t.string :result
+      t.string :delete_string
       t.belongs_to :session
 
       t.timestamps

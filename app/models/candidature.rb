@@ -38,4 +38,5 @@ class Candidature < ActiveRecord::Base
   def self.generate_random_string
     SecureRandom.hex(4)
   end
+
 end

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140124203749) do
     t.date     "submitDate"
     t.date     "bornDate"
     t.string   "result"
+    t.string   "delete_string"
     t.integer  "session_id"
     t.datetime "created_at"
     t.datetime "updated_at"
