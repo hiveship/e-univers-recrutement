@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5948edc-5995-4a7f-9666-46a72b14db51" name="Default" comment="Créations de sessions à partir d'un profil de poste donné. Tests lors de la suppression d'un profil de poste.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/candidatures_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/candidatures_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
     </list>
     <ignored path="recrutement.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -111,7 +109,7 @@
       <file leaf-file-name="candidatures_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/candidatures_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="50" selection-start="615" selection-end="615" vertical-scroll-proportion="0.5769231" vertical-offset="0" max-vertical-offset="855">
+            <state line="28" column="58" selection-start="797" selection-end="797" vertical-scroll-proportion="0.5518395" vertical-offset="90" max-vertical-offset="990">
               <folding />
             </state>
           </provider>
@@ -1220,12 +1218,12 @@
       <workItem from="1394197987572" duration="408000" />
       <workItem from="1394439974165" duration="2587000" />
       <workItem from="1394578129277" duration="120000" />
-      <workItem from="1394578328983" duration="299000" />
+      <workItem from="1394578328983" duration="775000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179627000" />
+    <option name="totallyTimeSpent" value="180103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="0" />
@@ -1572,7 +1570,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/candidatures_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="50" selection-start="615" selection-end="615" vertical-scroll-proportion="0.5769231" vertical-offset="0" max-vertical-offset="855">
+        <state line="28" column="58" selection-start="797" selection-end="797" vertical-scroll-proportion="0.5518395" vertical-offset="90" max-vertical-offset="990">
           <folding />
         </state>
       </provider>
