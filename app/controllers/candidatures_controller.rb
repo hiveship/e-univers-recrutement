@@ -19,7 +19,9 @@ class CandidaturesController < ApplicationController
     @candidature.submitDate = Date.today
     @candidature.session_id = @session.id
 
-    if @candidature.save
+
+
+    if @candidature.save && @candidature.is_unique
       flash[:success] = "Candidature enregistrée"
     else
       flash[:error] = "Une erreur est apparu, veuillez réésayer !"
