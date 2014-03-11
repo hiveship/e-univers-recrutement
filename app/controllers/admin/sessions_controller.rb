@@ -1,4 +1,5 @@
 class Admin::SessionsController < Admin::AdminController
+
   def index
     @sessions= Session.all
   end
@@ -16,45 +17,37 @@ class Admin::SessionsController < Admin::AdminController
   def create
     @session = Session.new params.require(:session).permit(:title, :description, :beginDate, :endDate, :profil_id)
     @session.state = Session::ACTIVATE
-    respond_to do |format|
-      if @session.save
-        flash[:success] = "La session a bien été créée !"
-        format.html { redirect_to recruteur_sessions_path}
-        format.json { head :no_content }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
+
+    if @session.save
+      flash[:success] = "La session a bien été créée !"
+      redirect_to recruteur_sessions_path
+    else
+      flash[:error] = "Impossible de créer la session."
+      redirect_to new_admin_session_path
     end
   end
 
   def update
     @session = Session.find params[:id]
-    respond_to do |format|
-      if @session.update params.require(:session).permit(:title, :description, :beginDate, :endDate)
-        flash[:success] = "La session a bien été modifiée !"
-        format.html { redirect_to recruteur_sessions_path }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
+
+    if @session.update params.require(:session).permit(:title, :description, :beginDate, :endDate)
+      flash[:success] = "La session a bien été modifiée !"
+      redirect_to recruteur_sessions_path
+    else
+      redirect_to edit_admin_session_path
     end
   end
 
   def destroy
     Session.find(params[:id]).destroy!
-    flash[:success]=" La session a bien été supprimée !"
-    respond_to do |format|
-      format.html { redirect_to recruteur_sessions_path }
-      format.json { head :no_content }
-    end
-
+    flash[:success] = " La session a bien été supprimée !"
+    redirect_to recruteur_sessions_path
   end
 
 
   def activate
     @session = Session.find params[:id]
+
     if @session.state == Session::DEACTIVATE
       @session.update_columns :state => Session::ACTIVATE
       flash[:success] = "La session a bien été relancée !"

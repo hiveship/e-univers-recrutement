@@ -1,5 +1,4 @@
 class Session < ActiveRecord::Base
-
   ACTIVATE = "active"
   DEACTIVATE = "blocked"
 
@@ -29,6 +28,7 @@ class Session < ActiveRecord::Base
   end
 
   def get_status
+    # Calcul et retourne le statut d'une session [en cours / prévu / terminée]
     if self.beginDate > Date.today
       :planned
     elsif self.endDate < Date.today
@@ -37,5 +37,4 @@ class Session < ActiveRecord::Base
       :pending
     end
   end
-
 end

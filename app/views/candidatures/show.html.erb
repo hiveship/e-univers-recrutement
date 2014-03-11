@@ -1,37 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Pseudo:</strong>
-  <%= @candidature.pseudo %>
+    <strong>Votre psseudo:</strong>
+    <%= @candidature.pseudo %>
 </p>
 
 <p>
-  <strong>Mail:</strong>
-  <%= @candidature.mail %>
+    <strong>Votre mail:</strong>
+    <%= @candidature.mail %>
 </p>
 
 <p>
-  <strong>Motivation:</strong>
-  <%= @candidature.motivation %>
+    <strong>Votre description:</strong>
+    <%= @candidature.motivation %>
 </p>
 
 <p>
-  <strong>Submitdate:</strong>
-  <%= @candidature.submitDate %>
+    <strong>Date de naissance:</strong>
+    <%= @candidature.bornDate %>
 </p>
 
 <p>
-  <strong>Borndate:</strong>
-  <%= @candidature.bornDate %>
+    <strong>Vous avez postulé le:</strong>
+    <%= @candidature.submitDate %>
 </p>
 
-<p>
-  <strong>Result:</strong>
-  <%= @candidature.result %>
-</p>
+<strong> Vous pouvez retirer votre candidature en cliquant sur le lien suivant, attention, aucun retour en arrière ne
+    sera possible.
+    Si vous changez d'avis, il vous faudra créer une nouvelle candidature à partir de zéro. </strong>
 
-<p>
-  <strong>Id session:</strong>
-  <%= @candidature.session_id %>
-</p>
+<td><%= link_to 'Destroy', @candidature, method: :delete, data: {confirm: 'Confirmer la suppresion ?'} %></td>
 

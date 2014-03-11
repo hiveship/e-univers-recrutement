@@ -7,12 +7,13 @@ class User < ActiveRecord::Base
   DEACTIVATE = "blocked"
 
   validates_presence_of :mail, :login, :status, :state, :pass
-  #validates_uniqueness_of :mail, :login
+  validates_uniqueness_of :mail, :login
   validates :login, :length => 3..10
 
   has_many :evaluations
 
   before_create do
+    # Actions éxécutées au moment de l'enregistrement dans la BDD : hash du mdp et mise en minuscule du pseudo
     self.pass = User.hash_password(self.pass)
     self.login = self.login.downcase
   end

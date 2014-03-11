@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_layout , only: [:require_login,:have_admin_rights]
-
+  before_action :set_layout, only: [:require_login, :have_admin_rights]
 
   def set_layout
-    if @me.status==User::MANAGER
+    if @me.status == User::MANAGER
       User::RECRUTEUR
     else
       @me.status

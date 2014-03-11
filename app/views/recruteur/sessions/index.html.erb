@@ -52,7 +52,7 @@
                 </span>
                 </td>
             <% end %>
-            <td><i class="icon-tasks"> </i><%= link_to 'Voir candidatures', recruteur_candidatures_path(session), method: :get %></td>
+            <td><i class="icon-tasks"> </i><%= link_to 'Détails', recruteur_candidatures_path(session), method: :get %></td>
             <% if @me.status == User::ADMIN %>
             <td>
                 <i class="icon-remove-sign"></i> <%= link_to 'Supprimer', admin_session_path(session), method: :delete, data: {confirm: 'Confirmer la suppression ?'} %>

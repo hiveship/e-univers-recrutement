@@ -16,7 +16,6 @@
 
 
     <div class="field">
-        <%= f.label :status %><br>
 
         <% if @user.status == User::RECRUTEUR %>
 
@@ -34,7 +33,6 @@
             <i class="icon-star-empty"></i>
             <%= link_to("Nommer Recruteur", set_recruteur_admin_user_path(@user), method: :post) %>
             <br>
-
 
         <% else %>
             <i class="icon-star"></i>

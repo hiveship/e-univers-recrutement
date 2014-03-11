@@ -15,45 +15,39 @@ class Admin::UsersController < Admin::AdminController
   def create
     @user = User.new params.require(:user).permit(:login, :mail, :status)
     @user.pass = User.generate_random_password
-    password = @user.pass
+    password = @user.pass # On récupère le password avant qu'il soit sécurisé, afin de pouvoir l'envoyer par mail
     flash[:success] = password # a retiré lors du déploiement
     @user.state = User::ACTIVATE
-    respond_to do |format|
-      if @user.save
-        #UserMailer.welcome(@user, password).deliver
-        #flash[:success] = "L'utilisateur a bien été créé !"
-        format.html { redirect_to admin_users_path}
-        format.json { head :no_content }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+
+    if @user.save
+      UserMailer.welcome(@user, password).deliver
+       flash[:success] = "L'utilisateur a bien été créé !"
+      redirect_to admin_users_path
+    else
+      flash[:error] = "Impossible de créer l'utilisateur"
+      redirect_to new_admin_user_path
     end
   end
 
   def update
     @user = User.find params[:id]
-    respond_to do |format|
-      if  @user.update params.require(:user).permit(:login, :mail)
-        flash[:success] = "L'utilisateur a bien été modifié !"
-        format.html { redirect_to admin_users_path}
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+
+    if  @user.update params.require(:user).permit(:login, :mail)
+      flash[:success] = "L'utilisateur a bien été modifié !"
+      redirect_to admin_users_path
+    else
+      flash[:error] = "Impossible de modifier l'utilisateur."
+      redirect_to edit_admin_user_path
     end
   end
 
   def destroy
     @user = User.find params[:id]
+
     if @user.id != @me.id
-      @user.destroy
+      @user.destroy!
       flash[:success] = "L'utilisateur a bien été supprimé !"
-      respond_to do |format|
-        format.html { redirect_to admin_users_path }
-        format.json { head :no_content }
-      end
+      redirect_to admin_users_path
     else
       flash[:error] = "Erreur, vous ne pouvez pas supprimer votre propre compte"
       redirect_to :admin_users
@@ -62,6 +56,7 @@ class Admin::UsersController < Admin::AdminController
 
   def activate
     @user = User.find params[:id]
+
     if @user.id != @me.id
       if @user.state == User::DEACTIVATE
         @user.update_columns :state => User::ACTIVATE
@@ -78,6 +73,7 @@ class Admin::UsersController < Admin::AdminController
 
   def deactivate
     @user = User.find params[:id]
+
     if @user.id != @me.id
       if @user.state == User::ACTIVATE
         @user.update_columns :state => User::DEACTIVATE
@@ -94,6 +90,7 @@ class Admin::UsersController < Admin::AdminController
 
   def set_admin
     @user = User.find params[:id]
+
     if  @user.id != @me.id
       if @user.status == User::RECRUTEUR || @user.status == User::MANAGER
         @user.update_columns :status => User::ADMIN
@@ -129,7 +126,7 @@ class Admin::UsersController < Admin::AdminController
     if  @user.id != @me.id
       if @user.status == User::ADMIN || @user.status == User::RECRUTEUR
         @user.update_columns :status => User::MANAGER
-        #UserMailer.set_manager(@user).deliver
+        UserMailer.set_manager(@user).deliver
         flash[:success] = "Le compte a bien été nommé manager !"
       else
         flash[:error] = "Erreur, il s'agit déjà d'un recruteur !"

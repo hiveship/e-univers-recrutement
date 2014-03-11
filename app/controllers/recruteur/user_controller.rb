@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class Recruteur::UserController < Recruteur::RecruteurController
   # Controler qui gère uniquement @me
 
   def edit
@@ -8,16 +8,13 @@ class UserController < ApplicationController
   def update
     @user = @me
     @user.update_password params[:user][:pass]
-    respond_to do |format|
-      if  @user.save
-        flash[:success] = "Votre mot de passe a bien été modifié !"
-        format.html { redirect_to edit_user_path}
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+
+    if @user.save
+      flash[:success] = "Votre mot de passe a bien été modifié !"
+      redirect_to edit_recruteur_user_path(@me)
+    else
+      flash[:error] = "Modification impossible"
+      redirect_to edit_recruteur_user_path(@me)
     end
   end
-
 end
