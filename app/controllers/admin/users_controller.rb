@@ -141,7 +141,7 @@ class Admin::UsersController < Admin::AdminController
     @user = User.find params[:id]
     new_password = @user.reset_password
     UserMailer.reset_password(@user, new_password).deliver
-    flash[:success] = "Le mot de passse a bien été ré-initialisé !"
+    flash[:success] = "Vous avez bien reintialisé le mot de passe"
     redirect_to :admin_users
   end
 

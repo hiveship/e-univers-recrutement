@@ -20,20 +20,11 @@ class CandidaturesController < ApplicationController
     @candidature.session_id = @session.id
 
 
-    if !@candidature.is_unique
-    flash[:error]= "Votre Email est deja enregistré pour cette session"
-    redirect_to root_path
-    end
-
-    if !@candidature.valid_born_date
-    flash[:error]= "La date de naissance n'est pas valide"
-    redirect_to root_path
-    end
-
-    if @candidature.save
+    if @candidature.save && @candidature.is_unique && @candidature.valid_born_date
       flash[:success] = "Candidature enregistrée"
     else
       flash[:error] = "Une erreur est apparu, veuillez réésayer !"
+
     end
     redirect_to root_path
   end
