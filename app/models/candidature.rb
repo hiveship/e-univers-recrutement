@@ -21,6 +21,7 @@ class Candidature < ActiveRecord::Base
 
   def is_close
     if self.result == Candidature::REFUSER or self.result == Candidature::ACCEPTER
+      return true
     end
   end
 

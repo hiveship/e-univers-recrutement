@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a5948edc-5995-4a7f-9666-46a72b14db51" name="Default" comment="Créations de sessions à partir d'un profil de poste donné. Tests lors de la suppression d'un profil de poste.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/candidature.rb" afterPath="$PROJECT_DIR$/app/models/candidature.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/candidatures/show.html.erb" afterPath="$PROJECT_DIR$/app/views/candidatures/show.html.erb" />
     </list>
     <ignored path="recrutement.iws" />
@@ -73,24 +73,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/admin.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="16" selection-start="408" selection-end="408" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_adminheaders.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/application/_adminheaders.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="25" selection-start="1635" selection-end="1635" vertical-scroll-proportion="-17.416666" vertical-offset="182" max-vertical-offset="780">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,6 +109,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="candidature.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/candidature.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="17" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/admin/evaluations/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
@@ -136,10 +127,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/candidatures/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="4" selection-start="773" selection-end="773" vertical-scroll-proportion="0.63829786" vertical-offset="0" max-vertical-offset="525">
+            <state line="11" column="0" selection-start="289" selection-end="392" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="525">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/recruteur/candidatures/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="25" selection-start="3550" selection-end="3550" vertical-scroll-proportion="0.68085104" vertical-offset="893" max-vertical-offset="1470">
               <folding />
             </state>
           </provider>
@@ -216,17 +216,17 @@
         <option value="$PROJECT_DIR$/app/controllers/recruteur/evaluations_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/recruteur/evaluations/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/admin/profils/edit.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/recruteur/candidatures/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/candidatures/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/admin/sessions/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/admin.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/candidature.rb" />
         <option value="$PROJECT_DIR$/app/controllers/candidatures_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/admin/users/index.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20140124203712_create_candidatures.rb" />
         <option value="$PROJECT_DIR$/app/views/candidatures/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/candidature.rb" />
+        <option value="$PROJECT_DIR$/app/views/recruteur/candidatures/index.html.erb" />
       </list>
     </option>
   </component>
@@ -403,6 +403,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveship" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveship" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recruteur" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveship" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveship" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recruteur" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="candidatures" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1295,12 +1343,12 @@
       <workItem from="1394197987572" duration="408000" />
       <workItem from="1394439974165" duration="2587000" />
       <workItem from="1394578129277" duration="120000" />
-      <workItem from="1394578328983" duration="4197000" />
+      <workItem from="1394578328983" duration="5379000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183525000" />
+    <option name="totallyTimeSpent" value="184707000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="0" />
@@ -1492,11 +1540,6 @@
         <state line="27" column="29" selection-start="856" selection-end="856" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="540" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/recruteur/candidatures/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="141" selection-start="2124" selection-end="2124" vertical-scroll-proportion="0.0" vertical-offset="49" max-vertical-offset="1095" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/candidatures/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="68" selection-start="1096" selection-end="1129" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="660" />
@@ -1547,13 +1590,6 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/admin/admin_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="1" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/candidature.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
           <folding />
         </state>
       </provider>
@@ -1635,13 +1671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/evaluations/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/evaluations/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.45833334" vertical-offset="11" max-vertical-offset="585">
@@ -1663,9 +1692,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/evaluations/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/candidatures/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="4" selection-start="773" selection-end="773" vertical-scroll-proportion="0.63829786" vertical-offset="0" max-vertical-offset="525">
+        <state line="11" column="0" selection-start="289" selection-end="392" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="525">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/candidature.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="17" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/recruteur/candidatures/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="25" selection-start="3550" selection-end="3550" vertical-scroll-proportion="0.68085104" vertical-offset="893" max-vertical-offset="1470">
           <folding />
         </state>
       </provider>
