@@ -1,33 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+    <h2><center> Récapitulatif de la candidature :</center></h2>
+</div>
 
-<p>
-    <strong>Votre psseudo:</strong>
-    <%= @candidature.pseudo %>
-</p>
+<div class="hero-unit">
+    <p>
+        <strong>Posté le : </strong> <%= @candidature.submitDate.strftime('%d/%m/%Y') %> <strong> par: </strong><%= @candidature.pseudo %>
+    </p>
 
-<p>
-    <strong>Votre mail:</strong>
-    <%= @candidature.mail %>
-</p>
 
-<p>
-    <strong>Votre description:</strong>
-    <%= @candidature.motivation %>
-</p>
+    <p>
+        <strong>Motivation:</strong>
+        <%= @candidature.motivation %>
+    </p>
 
-<p>
-    <strong>Date de naissance:</strong>
-    <%= @candidature.bornDate %>
-</p>
+    <p> Vous pouvez retirer votre candidature en cliquant sur le lien suivant, attention, aucun retour en arrière ne
+        sera possible.
+        Si vous changez d'avis, il vous faudra créer une nouvelle candidature à partir de zéro.
+    </p>
 
-<p>
-    <strong>Vous avez postulé le:</strong>
-    <%= @candidature.submitDate %>
-</p>
 
-<strong> Vous pouvez retirer votre candidature en cliquant sur le lien suivant, attention, aucun retour en arrière ne
-    sera possible.
-    Si vous changez d'avis, il vous faudra créer une nouvelle candidature à partir de zéro. </strong>
+    <td><%= link_to 'Supprimer ma candidature', @candidature, method: :delete, data: {confirm: 'Confirmer la suppresion ?'} , class: "btn" %></td>
+    
+</div>
 
-<td><%= link_to 'Destroy', @candidature, method: :delete, data: {confirm: 'Confirmer la suppresion ?'} %></td>
+
+
+
 

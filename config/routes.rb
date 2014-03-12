@@ -77,7 +77,7 @@ Recrutement::Application.routes.draw do
     end
   end
 
-  resources :candidatures, only: [:destroy]
+  resources :candidatures, only: [:destroy,:show]
   # ==================
 
   root to: 'sessions#index'
