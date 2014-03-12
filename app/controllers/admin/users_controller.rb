@@ -61,7 +61,7 @@ class Admin::UsersController < Admin::AdminController
       if @user.state == User::DEACTIVATE
         @user.update_columns :state => User::ACTIVATE
         UserMailer.activate(@user).deliver
-        flash[:success] = "Le compte a bien été bloqué !"
+        flash[:success] = "Le compte a bien été activé !"
       else
         flash[:error] = "Le compte est déjà actif !"
       end
@@ -78,7 +78,7 @@ class Admin::UsersController < Admin::AdminController
       if @user.state == User::ACTIVATE
         @user.update_columns :state => User::DEACTIVATE
         UserMailer.deactivate(@user).deliver
-        flash[:success] = "Le compte a bien été activé !"
+        flash[:success] = "Le compte a bien été bloqué !"
       else
         flash[:error] = "le compte est déjà bloqué !"
       end

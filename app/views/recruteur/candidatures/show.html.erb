@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Pseudo:</strong>
+    <%= @candidature.pseudo %>
+</p>
+
+<p>
+    <strong>Mail:</strong>
+    <%= @candidature.mail %>
+</p>
+
+<p>
+    <strong>Motivation:</strong>
+    <%= @candidature.motivation %>
+</p>
+
+<p>
+    <strong>Submitdate:</strong>
+    <%= @candidature.submitDate %>
+</p>
+
+<p>
+    <strong>Borndate:</strong>
+    <%= @candidature.bornDate %>
+</p>
+
+
+<strong>Result:</strong>
+<%= @candidature.result %>
+<% if @me.status == User::ADMIN or @me.status == User::MANAGER %>
+    <%= form_for [:recruteur, @candidature], url: set_result_recruteur_candidature_path(@candidature) do |f| %>
+        <div>
+            <% if @candidature.result == Candidature::INDEFINI or @candidature.result == nil %>
+                <%= select("candidature", "result", [Candidature::REFUSER, Candidature::ENTRETIEN, Candidature::ACCEPTER]) %>
+            <% elsif @candidature.result == Candidature::ENTRETIEN %>
+                <%= select("candidature", "result", [Candidature::REFUSER, Candidature::ACCEPTER]) %>
+            <% end %>
+            <%= f.submit %>
+        </div>
+    <% end %>
+<% end %>
+
+<p>
+    <strong>Évaluations:</strong>
+    <%= link_to 'Évaluations', recruteur_evaluations_path(@candidature) %>
+</p>
+
+<%= link_to 'Edit', admin_candidature_path(@candidature) %> |
+<%= link_to 'Back', recruteur_candidatures_path %>

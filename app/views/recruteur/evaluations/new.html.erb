@@ -1,0 +1,29 @@
+<div class="page-header">
+    <center><h2> Nouvelle Evaluation </h2></center>
+</div>
+
+<%= form_for [:recruteur, @evaluation] do |f| %>
+    <% if @evaluation.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+            <ul>
+                <% @evaluation.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= f.label :mark , "Votre note" %><br>
+        <%= f.select(:mark, options_for_select([['0',0],['1',1],['2', 2],['3', 3],['4', 4],['5', 5]])) %>
+    </div>
+    <div class="field">
+        <%= f.label :commentary , "Commentaire" %><br>
+        <%= f.text_area :commentary , :size => "5x5" , :class => "span8"  %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Evaluer" %>
+    </div>
+<% end %>

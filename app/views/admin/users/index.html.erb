@@ -1,6 +1,7 @@
-
 <div class="page-header">
-    <h2><center>Liste des comptes</center></h2>
+    <h2>
+        <center>Liste des comptes</center>
+    </h2>
 </div>
 <%= link_to 'Nouvel utilisateur', new_admin_user_path, class: "btn pull-right" %>
 
@@ -18,9 +19,15 @@
     <tbody>
 
     <% @users.each do |user| %>
+
+
         <tr>
+
+
             <td><h6><%= user.login %></h6></td>
             <td><%= user.mail %></td>
+
+
             <% if user.status == User::ADMIN %>
                 <td>
                     <center>
@@ -31,7 +38,7 @@
                 </span>
                     </center>
                 </td>
-            <% elsif user.status == User::RECRUTEUR%>
+            <% elsif user.status == User::RECRUTEUR %>
                 <td>
                     <center>
                 <span class="label label-success">
@@ -55,31 +62,32 @@
 
             <td>
                 <center>
-                    <%= link_to ' Modifier', edit_admin_user_path(user),class:"icon-pencil", method: :get %>
+                    <%= link_to ' Modifier', edit_admin_user_path(user), class: "icon-pencil", method: :get %>
                 </center>
             </td>
             <td>
                 <center>
-                    <%= link_to ' Suppr', admin_user_path(user),class:"icon-remove-sign", method: :delete, data: {confirm: 'Are you sure?'} %>
+                    <%= link_to ' Suppr', admin_user_path(user), class: "icon-remove-sign", method: :delete, data: {confirm: 'Etes vous sûr ?'} %>
                 </center>
             </td>
             <td>
                 <center>
-                    <%= link_to ' Reset password', reset_password_admin_user_path(user),class:"icon-repeat", method: :post %>
+                    <%= link_to ' Reset password', reset_password_admin_user_path(user), class: "icon-repeat", method: :post %>
                 </center>
             </td>
             <% if user.state == User::ACTIVATE %>
                 <td>
 
-                    <%= link_to ' Desactiver compte', deactivate_admin_user_path(user),class:"icon-eye-open", method: :post %>
+                    <%= link_to ' Desactiver compte', deactivate_admin_user_path(user), class: "icon-eye-open", method: :post %>
                 </td>
             <% else %>
                 <td>
 
 
-                    <%= link_to ' Activer compte', activate_admin_user_path(user),class:"icon-eye-close", method: :post %>
+                    <%= link_to ' Activer compte', activate_admin_user_path(user), class: "icon-eye-close", method: :post %>
                 </td>
             <% end %>
+        </tr>
         </tr>
     <% end %>
 

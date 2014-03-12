@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mark:</strong>
+  <%= @evaluation.mark %>
+</p>
+
+<p>
+  <strong>Commentary:</strong>
+  <%= @evaluation.commentary %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= User.find_by(id: @evaluation.user_id).login %>
+</p>

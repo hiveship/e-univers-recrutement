@@ -1,0 +1,90 @@
+
+        <div class="page-header">
+            <h2><center><%=@session.title %> </center></h2>
+        </div>
+
+        <div class="hero-unit">
+            <p>
+                <strong>Disponible du : </strong> <%= @session.beginDate.strftime('%d/%m/%Y') %><strong> au : </strong> <%= @session.endDate.strftime('%d/%m/%Y') %>
+            </p>
+
+
+
+            <p>
+                <strong>Poste concerné:</strong>
+                <%= @session.profil.title %>
+            </p>
+
+            <p>
+                <strong>Description du poste concerné:</strong>
+                <%= @session.profil.description %>
+            </p>
+        </div>
+
+            <h2>
+                <center>Les candidatures enregistrées :</center>
+            </h2>
+        <br>
+        <table class="table-striped table-bordered span12">
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Mail</th>
+                <th>Motivation</th>
+                <th>Date candidature</th>
+                <th>Date de naissance</th>
+                <th>Resultat</th>
+                <th></th>
+
+                <% if @me.status == User::ADMIN or @me.status == User::MANAGER %>
+                    <th></th>
+                    <th></th>
+
+                <% end %>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @candidatures.each do |candidature| %>
+                <tr>
+                    <td><%= candidature.pseudo %></td>
+                    <td><%= candidature.mail %></td>
+                    <td><%= candidature.motivation %></td>
+                    <td><%= candidature.submitDate.strftime('%d/%m/%Y') %></td>
+                    <td><%= candidature.bornDate.strftime('%d/%m/%Y') %></td>
+                    <% if candidature.result==Candidature::INDEFINI %>
+                        <td>Indefini</td>
+                    <% elsif candidature.result==Candidature::ENTRETIEN %>
+                        <td>Entretien</td>
+                    <% elsif candidature.result==Candidature::ACCEPTER %>
+                        <td>Acceptée</td>
+                    <% else %>
+                        <td>Refusée</td>
+                    <% end %>
+                    <% if @me.status == User::ADMIN or @me.status == User::MANAGER %>
+                        <td>
+                            <%= form_for [:recruteur, candidature], url: set_result_recruteur_candidature_path(candidature) do |f| %>
+                                <div>
+                                    <% if candidature.result == Candidature::INDEFINI or candidature.result == nil %>
+                                        <%= select("candidature", "result", [['Refuser', Candidature::REFUSER], ['Entretien', Candidature::ENTRETIEN], ['Accepter', Candidature::ACCEPTER]]) %>
+                                        <%= f.submit "OK" %>
+                                    <% elsif candidature.result == Candidature::ENTRETIEN %>
+                                        <%= select("candidature", "result", [['Refuser', Candidature::REFUSER], ['Accepter', Candidature::ACCEPTER]]) %>
+                                        <%= f.submit "OK" %>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        </td>
+                    <% end %>
+                    <td>
+                    <% unless candidature.is_close %>
+                     <%= link_to 'Évaluations', recruteur_evaluations_path(candidature)  %>
+                    <% end %>
+                    </td>
+                    <% if @me.status == User::ADMIN %>
+                        <td><%= link_to('Supprimer', [:admin, candidature], method: :delete, data: {confirm: 'Êtes-vous sûr de vouloir supprimer cette candidature ?'}) %> </td>
+                    <% end %>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>

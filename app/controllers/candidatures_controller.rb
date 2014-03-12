@@ -19,14 +19,17 @@ class CandidaturesController < ApplicationController
     @candidature.submitDate = Date.today
     @candidature.session_id = @session.id
 
-
-    if @candidature.save && @candidature.is_unique && @candidature.valid_born_date
-      flash[:success] = "Candidature enregistrée"
+    if !@candidature.is_unique
+      if @candidature.save
+        flash[:success] = "Candidature enregistrée"
+        redirect_to root_path
+      else
+        render action: :new
+      end
     else
-      flash[:error] = "Une erreur est apparu, veuillez réésayer !"
-
+      flash[:error] = "Une candidature éxiste déjà à votre nom"
+      render action: :new
     end
-    redirect_to root_path
   end
 
   def destroy

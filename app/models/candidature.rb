@@ -7,28 +7,24 @@ class Candidature < ActiveRecord::Base
 
   validates_presence_of :pseudo, :mail, :motivation, :submitDate, :bornDate, :result
   validates_length_of :pseudo, {in: 3..10}
-  validate :is_unique
   validate :valid_born_date
 
   belongs_to :sessions
   has_many :evaluation
 
-  # La date de naissance doit être strictement supérieur à la date du jour
   def valid_born_date
     if self.bornDate > Date.today
+      errors.add(:bornDate, "Erreur, la date de naissance doit être strictement supérieur à la date du jour.")
     end
   end
 
   def is_close
-    if self.result == Candidature::REFUSER or self.result == Candidature::ACCEPTER
-      return true
-    end
+    self.result == Candidature::REFUSER or self.result == Candidature::ACCEPTER
   end
 
   # Pour une session, on ne peut utiliser un mail ou un pseudo déjà utilisé
   def is_unique
-    unless Candidature.exists?(session_id: self.session_id, pseudo: self.pseudo) or Candidature.exists?(session_id: self.session_id, mail: self.mail)
-    end
+    Candidature.exists?(session_id: self.session_id, pseudo: self.pseudo) or Candidature.exists?(session_id: self.session_id, mail: self.mail)
   end
 
   def to_param
@@ -39,5 +35,4 @@ class Candidature < ActiveRecord::Base
   def self.generate_random_string
     SecureRandom.hex(4)
   end
-
 end

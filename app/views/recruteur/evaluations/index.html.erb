@@ -1,0 +1,161 @@
+<div class="page-header">
+    <h2><center> Récapitulatif de la candidature :</center></h2>
+</div>
+
+<div class="hero-unit">
+    <p>
+        <strong>Posté le : </strong> <%= @candidature.submitDate.strftime('%d/%m/%Y') %> <strong> par: </strong><%= @candidature.pseudo %>
+    </p>
+
+
+    <p>
+        <strong>Motivation:</strong>
+        <%= @candidature.motivation %>
+    </p>
+</div>
+
+
+
+
+
+<h2><center>Les évaluations de : <%=@candidature.pseudo %> </center></h2>
+
+<br>
+
+
+<div class="row">
+    <div class="span8">
+        <table class="table table-bordered table-striped table-condensed span8">
+            <thead>
+            <tr>
+                <th>Note</th>
+                <th>Evaluateur</th>
+
+                <th>Commentaire</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @evaluations.each do |evaluation| %>
+                <% if evaluation == @myeval %>
+                    <tr class="info">
+                <% else %>
+                    <tr>
+                <% end %>
+                <td>
+                    <small>
+                        <% if evaluation.mark==0 %>
+                            <i class="icon-star-empty"></i>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                        <% elsif evaluation.mark==1 %>
+                            <span class="icon-star"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                        <% elsif evaluation.mark==2 %>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+
+                        <% elsif evaluation.mark==3 %>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star-empty"></span>
+                            <span class="icon-star-empty"></span>
+                        <% elsif evaluation.mark==4 %>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star-empty"></span>
+
+                        <% else %>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+
+                        <% end %>
+                    </small>
+                </td>
+
+                <td><%= User.find_by(id: evaluation.user_id).login %></td>
+                <td class="span4"><%= evaluation.commentary %></td>
+                <td><%= link_to 'Editer', edit_recruteur_evaluation_path(evaluation) if (evaluation.user_id == @me.id and !@candidature.is_close) %></td>
+                <% if evaluation.user_id == @me.id %>
+                    <td><%= link_to 'Supprimer', [:recruteur, evaluation], method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
+                <% elsif @me.status == User::ADMIN %>
+                    <td><%= link_to 'Supprimer', [:admin, evaluation], method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
+                <% else  %>
+                    <td></td>
+                <% end %>
+                </tr>
+            <% end %>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="span4">
+        <% if @myeval==nil %>
+            <div>
+                <blockquote>
+                    <%= form_for [:recruteur, @evaluation] do |f| %>
+                        <% if @evaluation.errors.any? %>
+                            <div id="error_explanation">
+                                <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+                                <ul>
+                                    <% @evaluation.errors.full_messages.each do |msg| %>
+                                        <li><%= msg %></li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        <% end %>
+
+                        <div class="field">
+                            <%= f.label :mark , "Votre note" %><br>
+                            <%= f.select(:mark, options_for_select([['0',0],['1',1],['2', 2],['3', 3],['4', 4],['5', 5]])) %>
+                        </div>
+                        <div class="field">
+                            <%= f.label :commentary , "Commentaire" %><br>
+                            <%= f.text_area :commentary , :size => "5x5" , :class => "span4"  %>
+                        </div>
+                        <div class="actions">
+                            <%= f.submit "Evaluer" %>
+                        </div>
+                        </blockquote>
+                        </div>
+                    <% end %>
+
+
+
+        <% else %>
+            <div>
+                <blockquote>
+                    <p class="text-center">
+
+                        Ma note est :
+                        <%= @myeval.mark %> / 5
+                    </p>
+
+                    <footer>
+
+                        Mon commentaire :
+                        <%= @myeval.commentary %>
+
+                    </footer>
+                </blockquote>
+            </div>
+        <% end %>
+    </div>
+</div>

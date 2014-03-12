@@ -1,0 +1,56 @@
+<div class="page-header">
+    <center>
+        <h2>Votre compte</h2>
+    </center>
+</div>
+<p id="notice"><%= notice %></p>
+<br>
+<p>
+    <strong>Login:</strong>
+    <%= @me.login %>
+</p>
+
+<p>
+    <strong>Mail:</strong>
+    <%= @me.mail %>
+</p>
+<p>
+    <strong>Vous êtes:</strong>
+
+    <% if @me.status == User::ADMIN %>
+        <span class="label label-important">
+              Administrateur
+        </span>
+    <% elsif @me.status == User::MANAGER %>
+         <span class="label label-info">
+              Manager
+        </span>
+    <% else %>
+          <span class="label label-success">
+              Recruteur
+        </span>
+    <% end %>
+
+</p>
+
+<%= form_for(@me, url: recruteur_user_path(@me), method: "patch") do |f| %>
+    <% if @me.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@me.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+            <ul>
+                <% @me.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <strong>Nouveau mot de passe:</strong>
+        <%= f.password_field :pass %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Valider" %>
+    </div>
+<% end %>
