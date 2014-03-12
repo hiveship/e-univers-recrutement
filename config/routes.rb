@@ -58,7 +58,7 @@ Recrutement::Application.routes.draw do
     resources :evaluations, except: [:index, :new, :create]
     # ==================
 
-    resources :users
+    resources :user
   end
 
 
