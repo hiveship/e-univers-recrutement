@@ -16,7 +16,7 @@ class Admin::UsersController < Admin::AdminController
     @user = User.new params.require(:user).permit(:login, :mail, :status)
     @user.pass = User.generate_random_password
     password = @user.pass # On récupère le password avant qu'il soit sécurisé, afin de pouvoir l'envoyer par mail
-    flash[:success] = password # a retiré lors du déploiement
+    #flash[:success] = password # a retiré lors du déploiement
     @user.state = User::ACTIVATE
 
     if @user.save

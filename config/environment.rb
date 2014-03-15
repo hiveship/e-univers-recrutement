@@ -6,11 +6,11 @@ Recrutement::Application.initialize!
 
 # Configurations pour l'envoie des mails
 ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "",
     :port                 => 587,
-    :domain               => "gmail.com",
-    :user_name            => "projet.test.univers", # Nom d'utilisateur (ici GMail)
-    :password             => "eunivers", # Password de messagerie
+    :domain               => "",
+    :user_name            => "",
+    :password             => "",
     :authentication       => "plain",
     :enable_starttls_auto => true
 }
