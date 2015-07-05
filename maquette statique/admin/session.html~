@@ -1,0 +1,151 @@
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+	body {
+	  padding-top: 60px;
+	  padding-bottom: 40px;
+	}
+	</style>	
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+
+
+
+<body>
+		<div class="navbar navbar-fixed-top">
+		  <div class="navbar-inner">
+			<div class="container">
+			  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </a>
+			  <a class="brand" href="#">E-Univers</a>
+			  <div class="nav-collapse">
+				<ul class="nav">
+				  <li class="active"><a href="session.html">Sessions</a></li>
+				  <li><a href="compte.html">Comptes</a></li>
+				  <li><a href="poste.html">Postes</a></li>
+				  
+				</ul>
+				
+				<form class="navbar-form pull-right">
+				  <ul class="nav pull-right">
+                            
+                            <li><a href="#">Admin</a> </li>          
+                            <button type="submit" class="btn">Se déconnecter</button>
+                        </ul>
+					
+				</form>
+				
+			  </div><!--/.nav-collapse -->
+			   </div>
+			</div>
+		 </div>
+
+<div class="container">
+
+      <!-- Main / Pr (primary marketing message ) -->
+      <div class="hero-unit">
+		<center>
+        <h2>Créer une session</h1>
+		<p></p>
+        <p><a class="btn btn-primary btn-large" href="creerSession.html">Formulaire &raquo;</a></p>
+		</center>
+      </div>
+	  
+	  
+			<table class="table table-condensed">
+				<h3><center>Les sessions 
+							<select>
+								  <option> Toutes </option>
+								  <option> En cours </option>
+								  <option> Prévues </option>
+								  <option> Passées</option>
+							</select>
+				</center></h3>
+				 <br/>
+				
+					<thead>
+								<tr>
+										  <th>Etat</th>
+										  <th>Intitulé session</th>
+										  <th>Date de début</th>
+										  <th>Date de fin des candidatures</th>
+										  <th></th>
+										  <th></th>
+										  <th></th>
+								</tr>
+					</thead>	
+			
+			<tbody>
+			
+					<tr>
+						<td><span class="label label-info">Prévue</span></td>
+						<td><a href="detailSession.html"> Recruteur</a></td>  <!-- CONTENU DU TABLEAU -->
+						<td>29/10/2013</td>
+						<td>10/11/2013</td>
+						<td><a href="#"> <i class="icon32 icon-play"></i>&nbsp;Lancer </a></td>
+						<td><a href="#"> <i class="icon32 icon-ban-circle"></i>&nbsp;Clôturer </a></td>
+						<td><a href="#"> <i class="icon32 icon-remove-sign"></i>&nbsp;Supprimer </a></td>
+					 </tr>
+					 
+					 <tr>
+						<td><span class="label label-warning">Stoppée</span></td>
+						<td><a href="#"> Opérateur</a></td>
+						<td>30/10/2013</td>
+						<td>12/11/2013</td>
+						<td><a href="#"> <i class="icon32 icon-step-forward"></i>&nbsp;Relancer <!-- 16x16pix size color red --> </a></td>
+						<td><a href="#"> <i class="icon32 icon-ban-circle"></i>&nbsp;Clôturer </a></td>
+						<td><a href="#"> <i class="icon32 icon-remove-sign"></i>&nbsp;Supprimer </a></td>
+					  </tr>
+					  
+					 <tr>
+						<td><span class="label label-success">En cours</span></td>
+						<td><a href="#"> Testeur</a></td>
+						<td>31/10/2013</td>
+						<td>20/11/2013</td>
+						<td><a href="#"> <i class="icon32 icon-pause"></i>&nbsp;Stopper </a></td>
+						<td><a href="#"> <i class="icon32 icon-ban-circle"></i>&nbsp;Clôturer </a></td>
+						<td><a href="#"> <i class="icon32 icon-remove-sign"></i>&nbsp;Supprimer </a></td>
+					 </tr>
+					  
+					 <tr>
+						<td><span class="label">Passée</span></td>
+						<td><a href="#"> Recruteur</a></td>
+						<td>31/08/2013</td>
+						<td>20/09/2013</td>
+						<td>
+						</a></td>
+						<td></td>
+						<td><a href="#"> <i class="icon32 icon-remove-sign"></i>&nbsp;Supprimer </a></td>
+					 </tr>
+			</tbody>
+				  
+		</table>
+	
+</body>	
+	
+	<footer>
+        <p>&copy; E-Univers</p>
+    </footer>
+</div>
+	  
+	  
