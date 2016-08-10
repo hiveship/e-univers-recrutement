@@ -1,3 +1,5 @@
+## Beaucoup d'erreurs avec les versions récentes des gems et de Ruby On Rails. Les sources ne sont plus fonctionelles en l'état...
+
 # Plate-forme de recrutement
 
 Cette application a été développé par un groupe d'étudiants en projet tuteuré de DUT Informatique. Quelques modifications ergonomiques restent à faire.
